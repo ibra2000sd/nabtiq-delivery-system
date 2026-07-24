@@ -1,0 +1,2 @@
+{ "id":"perf:demo-goldenish","type":"perf-report","project":"demo-goldenish",
+  "routes":[{"path":"/","lcp_ms":4200,"budget_lcp_ms":2500,"inp_ms":150,"budget_inp_ms":200,"cls":0.28,"budget_cls":0.1,"total_kb":420,"budget_kb":600}] }

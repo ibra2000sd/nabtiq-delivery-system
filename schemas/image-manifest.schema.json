@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Image Manifest",
+  "type": "object",
+  "required": ["id","type","schema_version","project","content_hash","slots"],
+  "properties": {
+    "type": { "const": "image-manifest" },
+    "slots": { "type": "array", "items": {
+      "type": "object",
+      "required": ["slot_id","why_needed","narrative_function","subject","desktop_crop","mobile_crop",
+                   "focal_point","light_variant","dark_variant","truth_label","fallback","alt_en","alt_ar",
+                   "loading_priority","status"],
+      "properties": {
+        "truth_label": { "enum": ["conceptual","documentary"] },
+        "fallback": { "enum": ["raster","lqip","blurhash","none"] },
+        "focal_point": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 1 } },
+        "status": { "enum": ["planned","generated","qa-passed","approved"] }
+      }
+    } }
+  }
+}

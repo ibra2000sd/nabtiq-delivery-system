@@ -6,3 +6,5 @@ demo: ## run both demos (bad blocks, fixed passes)
 check-bad:  ; bash scripts/run-checks.sh projects/demo-goldenish
 check-fixed:; bash scripts/run-checks.sh projects/demo-fixed
 index:      ; python3 probes/build_project_index.py projects/demo-fixed
+first-paint: ## live first-paint probe on the demo build (needs playwright)
+	bash scripts/first-paint.sh projects/demo-fixed

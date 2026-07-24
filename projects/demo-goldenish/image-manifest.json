@@ -1,0 +1,83 @@
+{
+  "id": "image-manifest:demo-goldenish",
+  "type": "image-manifest",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "content_hash": "sha256:e9a1d69da142e250ac6651487632f0a36c5e4ad076bfd00520665a342a64cdb3",
+  "pages": [
+    {
+      "path": "/"
+    },
+    {
+      "path": "/about"
+    },
+    {
+      "path": "/products/sesame"
+    }
+  ],
+  "slots": [
+    {
+      "slot_id": "home.hero",
+      "page": "home",
+      "section": "hero",
+      "why_needed": "Homepage hero",
+      "narrative_function": "trust",
+      "subject": "Sesame hero",
+      "desktop_crop": "16:9",
+      "mobile_crop": "4:5",
+      "focal_point": [
+        0.42,
+        0.38
+      ],
+      "text_safe_zones": [
+        "lower-third"
+      ],
+      "light_variant": true,
+      "dark_variant": false,
+      "truth_label": "conceptual",
+      "documentary_source": null,
+      "prohibited": [
+        "embedded-text",
+        "svg-fallback"
+      ],
+      "fallback": "svg",
+      "asset": "assets/home-hero.avif",
+      "alt_en": "Sesame hero",
+      "alt_ar": "صورة السمسم الرئيسية",
+      "loading_priority": "high",
+      "perf_budget_kb": 180,
+      "status": "approved"
+    },
+    {
+      "slot_id": "about.facility",
+      "page": "about",
+      "section": "facility",
+      "why_needed": "Show the company facility",
+      "narrative_function": "scale + credibility",
+      "subject": "Company processing facility",
+      "desktop_crop": "16:9",
+      "mobile_crop": "4:5",
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "text_safe_zones": [
+        "top"
+      ],
+      "light_variant": true,
+      "dark_variant": true,
+      "truth_label": "documentary",
+      "documentary_source": null,
+      "prohibited": [
+        "embedded-text"
+      ],
+      "fallback": "lqip",
+      "asset": "assets/facility.avif",
+      "alt_en": "Our facility",
+      "alt_ar": "منشأتنا",
+      "loading_priority": "auto",
+      "perf_budget_kb": 160,
+      "status": "approved"
+    }
+  ]
+}

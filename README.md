@@ -100,3 +100,42 @@ Formats confirmed against official docs (see `docs/CLAUDE-CODE-INTEGRATION.md`):
 Agent-Skills `SKILL.md`, the **corrected hooks** (stdin-JSON, not env vars) via `.claude/hooks/post_edit_check.py`,
 `anthropics/claude-code-action@v1`, and **real GitHub Artifact Attestations** of gate evidence in CI
 (`actions/attest-build-provenance`, Sigstore + Rekor; public repos on Free/Pro/Team, private needs Enterprise Cloud).
+
+## Wave 3 — visual chain (image plan + first-paint reliability)
+
+Adds visual capability skills (`.claude/skills/`): `art-direction-image-plan`, `page-experience-composition`
+(restored per Rev 2.1 item 10), `design-system` (DTCG, supported token types only), `image-generation`; and a
+fresh-context `visual-qa-reviewer` agent.
+
+Two-part visual reliability (the honest split of Rev 2.2 §G.2):
+- **`image_plan_check` (stdlib, deterministic)** — the static plan/asset half, wired into the gates. Blocks:
+  **SVG fallback** (first-paint SVG-before-raster flash risk), a **documentary slot with no source**
+  (fake-facility/cert guard), a **missing asset** (IO-missing), missing **Light/Dark** variant, incomplete plan.
+- **`probes/first_paint_probe.mjs` (Playwright, controlled hybrid)** — the runtime frame-level half: pins
+  browser/viewport/network/cache and runs the condition matrix (AR/EN · light/dark · desktop/mobile · cold/warm
+  cache · slow network · no-JS · IO-missing/dead · post-wait), asserting **zero SVG requests** where prohibited.
+  It **activates in Wave 4** against a built candidate (needs `npm i playwright`); it is deliberately NOT in the
+  zero-dependency CI yet. A probe supplies evidence; the aesthetic "wow" is a human owner decision.
+
+`demo-goldenish` now also seeds an SVG-fallback hero, a missing dark variant, a documentary facility with no
+source, and missing image assets → all blocked. `demo-fixed` ships a clean manifest with present assets → passes.
+
+## Wave 4 — build, accessibility, performance (+ LIVE first-paint)
+
+Adds capability skills `tech-architecture` (stack/ADR/profile) and `web-implementation` (semantic HTML,
+RTL via CSS logical properties, raster hero with `fetchpriority`, consent-gated analytics) with a tiny
+reference renderer `scripts/build_site.py`; and fresh-context `accessibility-reviewer` + `performance-reviewer`.
+
+New stdlib gates (wired in):
+- **`contrast_audit`** — WCAG 2.2 AA. Deterministic for solid colours (blocks `#999` on `#fff` = 2.85:1);
+  text-over-image/translucent pairs are **flagged HYBRID** for human review, never auto-passed.
+- **`perf_budget_check`** — blocks a route whose lab LCP/INP/CLS or weight exceeds its human-set budget
+  (lab ≠ field; real-user CWV is monitored post-launch).
+
+**The first-paint probe is now LIVE** (`probes/first_paint_probe.mjs`, Playwright). It runs against a real
+built page across the pinned condition matrix and **catches the SVG-before-raster flash**:
+```bash
+make first-paint                                   # demo-fixed build -> PASS (raster hero, IO-dead handled)
+bash scripts/first-paint.sh projects/demo-goldenish --flaw svg-flash   # -> FAIL (SVG request where prohibited)
+```
+This proves the exact Golden Tur visual failure is caught on a real page, not just in the plan.

@@ -1,0 +1,82 @@
+{
+  "id": "image-manifest:demo-fixed",
+  "type": "image-manifest",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "content_hash": "sha256:84a43412ebf9ec71c3e681b68a24e41b15ad88ad3f91f9aacd289075c1fc43ae",
+  "pages": [
+    {
+      "path": "/"
+    },
+    {
+      "path": "/products/sesame"
+    }
+  ],
+  "slots": [
+    {
+      "slot_id": "home.hero",
+      "page": "home",
+      "section": "hero",
+      "why_needed": "Establish premium exporter credibility in first paint",
+      "narrative_function": "trust + scale",
+      "subject": "Sesame in premium trade packaging",
+      "desktop_crop": "16:9",
+      "mobile_crop": "4:5",
+      "focal_point": [
+        0.42,
+        0.38
+      ],
+      "text_safe_zones": [
+        "lower-third"
+      ],
+      "light_variant": true,
+      "dark_variant": true,
+      "truth_label": "conceptual",
+      "documentary_source": null,
+      "prohibited": [
+        "embedded-text",
+        "fake-certificate",
+        "svg-fallback"
+      ],
+      "fallback": "lqip",
+      "asset": "assets/home-hero.avif",
+      "alt_en": "Premium sesame in export packaging",
+      "alt_ar": "سمسم فاخر في تغليف التصدير",
+      "loading_priority": "high",
+      "perf_budget_kb": 180,
+      "status": "approved"
+    },
+    {
+      "slot_id": "product.sesame.hero",
+      "page": "product",
+      "section": "hero",
+      "why_needed": "Show the product clearly on its page",
+      "narrative_function": "product clarity",
+      "subject": "Sesame seeds close-up",
+      "desktop_crop": "3:2",
+      "mobile_crop": "4:5",
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "text_safe_zones": [
+        "top"
+      ],
+      "light_variant": true,
+      "dark_variant": true,
+      "truth_label": "conceptual",
+      "documentary_source": null,
+      "prohibited": [
+        "embedded-text",
+        "svg-fallback"
+      ],
+      "fallback": "raster",
+      "asset": "assets/sesame.avif",
+      "alt_en": "Close-up of premium sesame seeds",
+      "alt_ar": "لقطة مقرّبة لبذور السمسم الفاخرة",
+      "loading_priority": "auto",
+      "perf_budget_kb": 140,
+      "status": "approved"
+    }
+  ]
+}

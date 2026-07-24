@@ -9,8 +9,8 @@ jobs:
   gates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - name: Real project must PASS (demo-fixed)
         run: bash scripts/run-checks.sh projects/demo-fixed
@@ -34,8 +34,8 @@ jobs:
       attestations: write    # write the signed attestation
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - name: Rebuild gate-evidence subject for the passing project
         run: python3 probes/build_project_index.py projects/demo-fixed

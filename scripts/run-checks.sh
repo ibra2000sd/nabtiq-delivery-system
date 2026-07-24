@@ -12,7 +12,7 @@ echo "=============================================="
 python3 probes/build_project_index.py "$PROJ" >/dev/null
 
 rc=0
-for probe in manifest_schema_validate truth_ledger_lint content_lint bilingual_parity_check secrets_scan header_csp_scan privacy_scan sca_triage verify_event_chain; do
+for probe in manifest_schema_validate truth_ledger_lint content_lint bilingual_parity_check image_plan_check contrast_audit perf_budget_check secrets_scan header_csp_scan privacy_scan sca_triage verify_event_chain; do
   echo "----------------------------------------------"
   python3 "probes/${probe}.py" "$PROJ" || rc=1
 done

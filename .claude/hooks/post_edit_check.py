@@ -32,8 +32,16 @@ def main():
         probes = ["truth_ledger_lint"]
     elif name.endswith(".content.json"):
         probes = ["content_lint", "bilingual_parity_check"]
+    elif name == "image-manifest.json":
+        subprocess.run([sys.executable, str(root / "scripts" / "seal.py"), fp],
+                       cwd=root, capture_output=True)
+        probes = ["image_plan_check"]
     elif "/security/" in fp.replace("\\", "/"):
         probes = ["secrets_scan", "header_csp_scan", "privacy_scan", "sca_triage"]
+    elif name == "design-tokens.json":
+        probes = ["contrast_audit"]
+    elif name == "perf-report.json":
+        probes = ["perf_budget_check"]
     for p in probes:
         r = subprocess.run([sys.executable, str(root / "probes" / f"{p}.py"), str(proj)],
                            cwd=root, capture_output=True, text=True)

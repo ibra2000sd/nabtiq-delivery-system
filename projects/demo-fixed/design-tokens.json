@@ -1,0 +1,5 @@
+{ "id":"design-tokens:demo-fixed","type":"design-tokens","schema_version":"2.2.0","project":"demo-fixed",
+  "contrast_pairs":[
+    {"name":"body","fg":"#111111","bg":"#ffffff","over_image":false},
+    {"name":"hero-caption","fg":"#ffffff","bg":"#000000","over_image":true}
+  ] }
