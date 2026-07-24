@@ -1,0 +1,56 @@
+{
+  "id": "page:demo-fixed:sesame",
+  "type": "content-page",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "content_hash": "sha256:db3928c822c5b21347a2283741c2bc854834825dec6779756260b97588d17b59",
+  "page_type": "product",
+  "locale_group": "sesame",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "Sesame",
+      "body": "Premium sesame for food manufacturers and traders, shipped with full export documentation."
+    }
+  ],
+  "locales": {
+    "en": {
+      "blocks": [
+        {
+          "id": "hero",
+          "heading": "Sesame",
+          "body": "Premium sesame for food manufacturers and traders, shipped with full export documentation."
+        }
+      ],
+      "claim_refs": [
+        "claim:0001",
+        "claim:0002"
+      ]
+    },
+    "ar": {
+      "blocks": [
+        {
+          "id": "hero",
+          "heading": "السمسم",
+          "body": "سمسم مختار لمصنّعي الأغذية والتجّار، يُشحن بوثائق تصدير كاملة."
+        }
+      ],
+      "claim_refs": [
+        "claim:0001",
+        "claim:0002"
+      ]
+    }
+  },
+  "essential_fields": {
+    "what_it_is": "verified",
+    "applications": "owner-stated",
+    "sourcing_role": "owner-stated",
+    "documented_origin": "owner-stated",
+    "quality_indicators": "owner-stated",
+    "packaging": "owner-stated",
+    "trade_terms": "owner-stated",
+    "logistics": "owner-stated",
+    "documentation": "approved-not-applicable",
+    "enquiry_requirements": "owner-stated"
+  }
+}

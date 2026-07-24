@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Truth Ledger",
+  "type": "object",
+  "required": ["id", "type", "schema_version", "project", "content_hash", "claims"],
+  "properties": {
+    "type": { "const": "truth-ledger" },
+    "content_hash": { "type": "string", "pattern": "^sha256:" },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "evidence_status", "claim_risk", "publication_mode", "required_approver_role", "publishable"],
+        "properties": {
+          "evidence_status": { "enum": ["verified", "owner-attested", "unverified", "unknown"] },
+          "claim_risk": { "enum": ["low", "medium", "high", "regulated"] },
+          "publication_mode": { "enum": ["as-fact", "attributed", "aspirational", "marketing", "omitted", "blocked"] },
+          "required_approver_role": { "enum": ["owner", "legal", "privacy", "tax", "finance", "food-safety", "certification"] },
+          "publishable": { "type": "boolean" },
+          "policy_prohibited": { "type": "boolean" },
+          "sources": { "type": "array" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+name: nabtiq-gates
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+permissions:
+  contents: read
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Real project must PASS (demo-fixed)
+        run: bash scripts/run-checks.sh projects/demo-fixed
+      - name: Guard self-test — the seeded blocker MUST block (demo-goldenish)
+        run: |
+          if bash scripts/run-checks.sh projects/demo-goldenish; then
+            echo "::error::demo-goldenish should have been BLOCKED but passed — the gate is broken."
+            exit 1
+          else
+            echo "OK: the gate correctly BLOCKED the seeded bad project."
+          fi
+
+  # Real cryptographic attestation of the gate evidence (Rev 2.2 §B.4).
+  # NOTE: GitHub Artifact Attestations run for PUBLIC repos on Free/Pro/Team plans;
+  #       PRIVATE/internal repos require GitHub Enterprise Cloud. Verify your plan.
+  attest-gate-evidence:
+    needs: gates
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write        # OIDC identity of this workflow run
+      attestations: write    # write the signed attestation
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Rebuild gate-evidence subject for the passing project
+        run: python3 probes/build_project_index.py projects/demo-fixed
+      - name: Attest the gate evidence (build provenance, Sigstore + Rekor)
+        uses: actions/attest-build-provenance@v2   # verify action version against current GitHub docs
+        with:
+          subject-path: projects/demo-fixed/index.json
+      # Verify anywhere with:
+      #   gh attestation verify projects/demo-fixed/index.json -R <ORG>/<REPO>

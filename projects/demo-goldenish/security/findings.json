@@ -1,0 +1,4 @@
+{ "findings": [
+  { "id": "SCA-001", "tool": "sca", "severity": "High", "cve": "CVE-2025-9999", "kev": true, "status": "confirmed" },
+  { "id": "SAST-014", "tool": "sast", "severity": "High", "cwe": "CWE-79", "status": "untriaged" }
+] }

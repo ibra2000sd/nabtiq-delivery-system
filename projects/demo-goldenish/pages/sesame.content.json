@@ -1,0 +1,55 @@
+{
+  "id": "page:demo-goldenish:sesame",
+  "type": "content-page",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "content_hash": "sha256:d1dd3fc289e529dc3b16beb0211ce80374d604bb33209304af743d88b1cc6477",
+  "page_type": "product",
+  "locale_group": "sesame",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "Sesame",
+      "body": "Premium sesame for food manufacturers and traders."
+    }
+  ],
+  "locales": {
+    "en": {
+      "blocks": [
+        {
+          "id": "hero",
+          "heading": "Sesame",
+          "body": "The leading premium sesame for manufacturers and traders."
+        }
+      ],
+      "claim_refs": [
+        "claim:0001",
+        "claim:0002"
+      ]
+    },
+    "ar": {
+      "blocks": [
+        {
+          "id": "hero",
+          "heading": "السمسم",
+          "body": "سمسم فاخر للمصنّعين والتجّار."
+        }
+      ],
+      "claim_refs": [
+        "claim:0001"
+      ]
+    }
+  },
+  "essential_fields": {
+    "what_it_is": "verified",
+    "applications": "owner-stated",
+    "sourcing_role": "owner-stated",
+    "documented_origin": "blocking-open-question",
+    "quality_indicators": "unknown",
+    "packaging": "owner-stated",
+    "trade_terms": "owner-stated",
+    "logistics": "owner-stated",
+    "documentation": "approved-not-applicable",
+    "enquiry_requirements": "owner-stated"
+  }
+}

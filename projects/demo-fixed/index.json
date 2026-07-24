@@ -1,0 +1,23 @@
+{
+  "id": "index:demo-fixed",
+  "type": "project-index",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "profile": "corporate-brochure",
+  "artifacts": {
+    "truth-ledger": {
+      "hash": "sha256:c760655bdf4f7676785b8d308d66cd81d3ec867f0dd6bbbaacd665a124d14efb",
+      "claims": 3
+    }
+  },
+  "pages": [
+    {
+      "page": "sesame",
+      "type": "product",
+      "hash": "sha256:db3928c822c5b21347a2283741c2bc854834825dec6779756260b97588d17b59"
+    }
+  ],
+  "event_count": 1,
+  "note": "DERIVED read-model — rebuildable from Git + events; not authoritative.",
+  "content_hash": "sha256:ea23a80bab2e17dd2e854ecaa7610df4bd249a8d824743b741fd680b739a9c0e"
+}

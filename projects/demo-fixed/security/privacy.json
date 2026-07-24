@@ -1,0 +1,8 @@
+{
+  "privacy_notice_url": "/privacy",
+  "lawful_basis": "consent",
+  "retention_days": 365,
+  "analytics_enabled": true,
+  "analytics_essential": false,
+  "consent_before_analytics": true
+}

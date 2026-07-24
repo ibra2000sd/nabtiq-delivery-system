@@ -1,0 +1,10 @@
+{
+  "id": "profile:demo-fixed",
+  "type": "project-profile",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "profile": "corporate-brochure",
+  "primary_language": "en",
+  "secondary_language": "ar",
+  "market": "gulf"
+}

@@ -1,0 +1,27 @@
+# Example: run Nabtiq fresh-context reviewers on each PR via the Claude Code GitHub Action (v1 GA).
+# Setup (one-time): run `/install-github-app` in Claude Code, or install https://github.com/apps/claude
+# and add the ANTHROPIC_API_KEY repository secret. Without the secret this workflow no-ops.
+name: nabtiq-claude-review
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+jobs:
+  review:
+    if: ${{ vars.ENABLE_CLAUDE_REVIEW == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: >
+            Run the Nabtiq gates on any changed project:
+            `bash scripts/run-checks.sh projects/<name>`.
+            Then delegate to the `truth-claim-reviewer` and `content-ia-reviewer` subagents
+            (they run in their own fresh context) to judge factual grounding and content/IA quality.
+            Post a concise PASS/FAIL/BLOCKED review with the exact claim ids / page fields.
+          claude_args: "--max-turns 8"

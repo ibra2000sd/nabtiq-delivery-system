@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project Index (DERIVED read-model — not authoritative)",
+  "type": "object",
+  "required": ["id", "type", "schema_version", "project"],
+  "properties": { "type": { "const": "project-index" } }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "truth-ledger:demo-goldenish",
+  "type": "truth-ledger",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "content_hash": "sha256:089f484899e52d79d3276bf1ab2b673a95e228125b76a555d03bd63f3a3d2676",
+  "claims": [
+    {
+      "id": "claim:0001",
+      "text": "A registered exporter of agricultural commodities.",
+      "evidence_status": "verified",
+      "claim_risk": "low",
+      "publication_mode": "as-fact",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": [
+        {
+          "ref": "commercial-registration.pdf",
+          "loc": "activity field"
+        }
+      ]
+    },
+    {
+      "id": "claim:0002",
+      "text": "The leading sesame exporter in the region.",
+      "evidence_status": "unverified",
+      "claim_risk": "medium",
+      "publication_mode": "as-fact",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": []
+    },
+    {
+      "id": "claim:0003",
+      "text": "We aim to become the first choice for sesame buyers in the Gulf.",
+      "evidence_status": "owner-attested",
+      "claim_risk": "low",
+      "publication_mode": "aspirational",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": []
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"event_type":"approval","subject_id":"claim:0003","artifact_hash":"sha256:bound-at-approval","gate":"content.vision-mission","decision":"approved","issuer":"sso:ibrahim@nabtiq","author":"gha:run/creator/551","role":"owner","policy_version":"truth@2.2.0","nonce":"n-3f9a2c","issued_at":"2026-07-24T15:40:00Z","expiry":"2026-08-24T15:40:00Z","run_id":"gha:run/reviewer/552"}

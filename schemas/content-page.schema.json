@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Content Page",
+  "type": "object",
+  "required": ["id", "type", "schema_version", "project", "content_hash", "page_type", "blocks"],
+  "properties": {
+    "type": { "const": "content-page" },
+    "page_type": { "enum": ["home", "about", "product", "service", "contact", "generic"] },
+    "content_hash": { "type": "string", "pattern": "^sha256:" },
+    "essential_fields": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": ["verified", "owner-stated", "approved-not-applicable", "approved-omission", "blocking-open-question", "unknown"]
+      }
+    },
+    "blocks": { "type": "array", "items": { "type": "object", "required": ["id"] } }
+  }
+}

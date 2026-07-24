@@ -1,0 +1,50 @@
+{
+  "id": "truth-ledger:demo-fixed",
+  "type": "truth-ledger",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "content_hash": "sha256:c760655bdf4f7676785b8d308d66cd81d3ec867f0dd6bbbaacd665a124d14efb",
+  "claims": [
+    {
+      "id": "claim:0001",
+      "text": "A registered exporter of agricultural commodities.",
+      "evidence_status": "verified",
+      "claim_risk": "low",
+      "publication_mode": "as-fact",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": [
+        {
+          "ref": "commercial-registration.pdf",
+          "loc": "activity field"
+        }
+      ]
+    },
+    {
+      "id": "claim:0002",
+      "text": "An established sesame exporter serving buyers across the Gulf.",
+      "evidence_status": "verified",
+      "claim_risk": "low",
+      "publication_mode": "as-fact",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": [
+        {
+          "ref": "export-shipping-records-2025.pdf",
+          "loc": "summary"
+        }
+      ],
+      "remediation_note": "Removed the unsupported superlative 'leading'; replaced with a verified factual statement."
+    },
+    {
+      "id": "claim:0003",
+      "text": "We aim to become the first choice for sesame buyers in the Gulf.",
+      "evidence_status": "owner-attested",
+      "claim_risk": "low",
+      "publication_mode": "aspirational",
+      "required_approver_role": "owner",
+      "publishable": true,
+      "sources": []
+    }
+  ]
+}

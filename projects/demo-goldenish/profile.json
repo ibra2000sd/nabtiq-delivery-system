@@ -1,0 +1,10 @@
+{
+  "id": "profile:demo-goldenish",
+  "type": "project-profile",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "profile": "corporate-brochure",
+  "primary_language": "en",
+  "secondary_language": "ar",
+  "market": "gulf"
+}

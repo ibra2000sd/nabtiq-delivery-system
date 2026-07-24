@@ -1,0 +1,23 @@
+{
+  "id": "index:demo-goldenish",
+  "type": "project-index",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "profile": "corporate-brochure",
+  "artifacts": {
+    "truth-ledger": {
+      "hash": "sha256:089f484899e52d79d3276bf1ab2b673a95e228125b76a555d03bd63f3a3d2676",
+      "claims": 3
+    }
+  },
+  "pages": [
+    {
+      "page": "sesame",
+      "type": "product",
+      "hash": "sha256:d1dd3fc289e529dc3b16beb0211ce80374d604bb33209304af743d88b1cc6477"
+    }
+  ],
+  "event_count": 0,
+  "note": "DERIVED read-model — rebuildable from Git + events; not authoritative.",
+  "content_hash": "sha256:e74b2f83e746140f1f393c84367f45679ae867abdf93c71bd2bc9696db7b675c"
+}

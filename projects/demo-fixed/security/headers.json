@@ -1,0 +1,7 @@
+{ "headers": {
+  "Content-Security-Policy": "default-src 'self'; script-src 'self'; require-trusted-types-for 'script'",
+  "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "geolocation=(), camera=(), microphone=()"
+} }
