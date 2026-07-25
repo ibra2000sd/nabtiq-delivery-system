@@ -1,0 +1,32 @@
+name: nabtiq-monitoring
+# Monitoring is a SCHEDULED AUTOMATION (Rev 2 primitive #5), never a "skill that runs forever".
+# On a cron it re-triggers the cheap deterministic watchers against the deployed project:
+#   * sca_triage        — new KEV / confirmed CVE in a shipped dependency re-blocks (supply-chain drift)
+#   * monitoring_state_check — proves uptime/RUM/error-tracking/dep-vuln-watch stay ARMED (silent monitor == broken)
+# A real deployment also wires external uptime + field-CWV (RUM) + error tracking; this workflow
+# is the in-repo half that keeps the evidence honest between deploys.
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      project:
+        description: "project dir under projects/ to monitor"
+        required: false
+        default: "demo-fixed"
+permissions:
+  contents: read
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Resolve project
+        id: p
+        run: echo "project=${{ github.event.inputs.project || 'demo-fixed' }}" >> "$GITHUB_OUTPUT"
+      - name: Dependency drift — re-triage supply chain (KEV/confirmed re-blocks)
+        run: python3 probes/sca_triage.py "projects/${{ steps.p.outputs.project }}"
+      - name: Content-freshness re-trigger + monitoring stays armed
+        run: python3 probes/monitoring_state_check.py "projects/${{ steps.p.outputs.project }}"

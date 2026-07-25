@@ -42,6 +42,12 @@ def main():
         probes = ["contrast_audit"]
     elif name == "perf-report.json":
         probes = ["perf_budget_check"]
+    elif name == "release-candidate.json":
+        probes = ["deploy_readiness"]
+    elif name == "live-verify.json":
+        probes = ["live_verify"]
+    elif name == "monitoring-config.json":
+        probes = ["monitoring_state_check"]
     for p in probes:
         r = subprocess.run([sys.executable, str(root / "probes" / f"{p}.py"), str(proj)],
                            cwd=root, capture_output=True, text=True)

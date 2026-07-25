@@ -139,3 +139,33 @@ make first-paint                                   # demo-fixed build -> PASS (r
 bash scripts/first-paint.sh projects/demo-goldenish --flaw svg-flash   # -> FAIL (SVG request where prohibited)
 ```
 This proves the exact Golden Tur visual failure is caught on a real page, not just in the plan.
+
+## Wave 5 — deploy, live-verify, monitoring (CI + events + scheduled automation)
+
+Deploy is **not a capability skill** — it is the runtime doing CI + authenticated events + a scheduled
+watcher (Rev 2 primitives #1/#5/#6, never #2). Three stage-aware stdlib probes join the chain (they
+**skip** until the project reaches that stage, i.e. until their trigger artifact exists):
+
+- **`deploy_readiness`** — activates on `release-candidate.json`. Blocks unless there is a `rollback_target`
+  (atomic-rollback readiness), `gates_green: true`, **and** an authenticated `deployment-authorization`
+  approval event whose **issuer ≠ author** with role `owner`/`release-manager`. A human authorizes the
+  release; the workflow cannot self-grant it.
+- **`live_verify`** — activates on `live-verify.json`. Blocks a `localhost`/`127.0.0.1`/`file://` target
+  (the Golden-Tur *"verified an old local server"* failure), failed route health, non-passing production
+  first-paint, or headers not re-scanned on the live origin. This is **evidence** for the human
+  live-visual + indexing approval events, not the approval itself.
+- **`monitoring_state_check`** — activates on `monitoring-config.json`. Requires uptime, RUM (field CWV),
+  error-tracking, and dependency-vuln watch to be **armed**, plus a content-freshness cadence. A silent
+  monitor reads as healthy, so we require proof it reports.
+
+Two workflows carry these:
+- **`.github/workflows/deploy.yml`** (`workflow_dispatch`) — re-runs the full chain, enforces
+  deploy-readiness, runs a placeholder deploy behind a `production` environment (add GitHub environment
+  protection for a second human approval), then gates on live-verify + monitoring-armed.
+- **`.github/workflows/monitoring.yml`** (daily cron + dispatch) — re-triggers `sca_triage` (new KEV /
+  confirmed CVE in a shipped dependency re-blocks) and `monitoring_state_check` (stays armed).
+
+The chain is now **15 probes**, stage-aware end to end. `demo-fixed` seeds a clean release
+(rollback + authorized deploy event + https live-verify + armed monitoring) and **passes all 15**;
+`demo-goldenish` seeds the inverse (null rollback, `gates_green:false`, no auth event, `http://localhost`
+live URL, monitoring off) and is **blocked by all three new probes** on top of its existing security blocks.

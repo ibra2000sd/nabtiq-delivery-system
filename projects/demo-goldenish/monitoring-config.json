@@ -1,0 +1,11 @@
+{
+  "id": "monitoring:demo-goldenish",
+  "type": "monitoring-config",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "uptime": false,
+  "rum": false,
+  "error_tracking": false,
+  "dep_vuln_watch": false,
+  "content_freshness": null
+}

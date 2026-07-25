@@ -22,7 +22,7 @@ gh repo create nabtiq-delivery-system --public --source=. --push
 
 ## 2. Watch the gates run (Actions tab → "nabtiq-gates")
 Expected on the initial push:
-- **gates** job → GREEN: `demo-fixed` passes all 9 probes; the self-test confirms `demo-goldenish` is BLOCKED.
+- **gates** job → GREEN: `demo-fixed` passes all 15 probes (stage-aware); the self-test confirms `demo-goldenish` is BLOCKED.
 - **attest-gate-evidence** job → GREEN: produces a Sigstore-signed build-provenance attestation of
   `projects/demo-fixed/index.json`, recorded in the Rekor transparency log.
 
@@ -60,3 +60,25 @@ Now a failing gate actually prevents merge — this is where CI becomes the hard
 - Attestations need a public repo (Free/Pro/Team) or Enterprise Cloud.
 - Pin `actions/attest-build-provenance` to the current major version (confirm on GitHub docs).
 - The gate self-test is intentional: CI **passes** when `demo-goldenish` is correctly blocked.
+
+## 6. Wave 5 — deploy / live-verify / monitoring (stage-aware)
+
+The three Wave-5 probes **skip** until a project reaches that stage (their trigger artifact exists),
+so they never false-block an early project. Once seeded they enforce hard release gates.
+
+```bash
+# demo-fixed ships a clean release → all 15 probes PASS
+bash scripts/run-checks.sh projects/demo-fixed
+
+# demo-goldenish seeds the inverse → deploy_readiness + live_verify + monitoring_state_check all BLOCK
+bash scripts/run-checks.sh projects/demo-goldenish
+```
+
+Expected blockers on `demo-goldenish`:
+- `deploy_readiness` → no `rollback_target`, `gates_green:false`, **no authenticated deployment-authorization event**.
+- `live_verify` → `http://localhost` target (the "tested a local server" failure), failed routes, no live first-paint, headers not re-scanned.
+- `monitoring_state_check` → uptime/RUM/error-tracking/dep-vuln-watch not armed, no content-freshness cadence.
+
+The gated deploy runs via **Actions → nabtiq-deploy** (`workflow_dispatch`); the scheduled watcher is
+**nabtiq-monitoring** (daily cron). Neither can self-grant the deployment-authorization event — a human
+issues it (issuer ≠ author), and `deploy_readiness` verifies the binding.

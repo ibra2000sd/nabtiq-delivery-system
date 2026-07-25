@@ -1,0 +1,11 @@
+{
+  "id": "live-verify:demo-fixed/v1.0.0",
+  "type": "live-verify",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "target_url": "https://demo-fixed.nabtiq.example",
+  "routes_ok": true,
+  "first_paint_live": "pass",
+  "headers_ok": true,
+  "verified_at": "2026-07-24T16:20:00Z"
+}

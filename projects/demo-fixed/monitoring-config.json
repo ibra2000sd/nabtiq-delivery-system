@@ -1,0 +1,12 @@
+{
+  "id": "monitoring:demo-fixed",
+  "type": "monitoring-config",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "uptime": true,
+  "rum": true,
+  "error_tracking": true,
+  "dep_vuln_watch": true,
+  "content_freshness": "monthly",
+  "armed_at": "2026-07-24T16:25:00Z"
+}

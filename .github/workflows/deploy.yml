@@ -1,0 +1,49 @@
+name: nabtiq-deploy
+# Deploy is a CI + EVENTS flow, NOT a capability skill (Rev 2 primitive #6 vs #2).
+# It re-runs the full gate chain, then enforces the Wave-5 release/live gates, and only
+# THEN would a real deploy step run. The authenticated deployment-authorization event
+# (issuer != author, role owner/release-manager) is what deploy_readiness.py verifies —
+# a human approval, cryptographically bound, not something this workflow can self-grant.
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: "project dir under projects/ to deploy"
+        required: true
+        default: "demo-fixed"
+permissions:
+  contents: read
+jobs:
+  deploy-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Full gate chain must PASS (incl. deploy_readiness / live_verify / monitoring)
+        run: bash scripts/run-checks.sh "projects/${{ github.event.inputs.project }}"
+      - name: Deploy-readiness gate (rollback + authenticated deployment-authorization event)
+        run: python3 probes/deploy_readiness.py "projects/${{ github.event.inputs.project }}"
+
+  deploy:
+    needs: deploy-gate
+    runs-on: ubuntu-latest
+    # A real environment lets you require a second human "environment protection" approval
+    # in GitHub before this job runs — layered on top of the in-repo authorization event.
+    environment: production
+    permissions:
+      contents: read
+      id-token: write        # OIDC identity of the deploy run (for provider auth / attestation)
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Placeholder deploy step (wire your host here)
+        run: |
+          echo "Gates + deploy-readiness passed for projects/${{ github.event.inputs.project }}."
+          echo "Wire your real deploy command here (e.g. rsync/CDN publish/host CLI)."
+          echo "Rollback target is recorded in release-candidate.json (atomic-rollback readiness)."
+      - name: Post-deploy live verification gate
+        run: python3 probes/live_verify.py "projects/${{ github.event.inputs.project }}"
+      - name: Monitoring must be ARMED after deploy
+        run: python3 probes/monitoring_state_check.py "projects/${{ github.event.inputs.project }}"

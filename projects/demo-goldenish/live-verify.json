@@ -1,0 +1,11 @@
+{
+  "id": "live-verify:demo-goldenish/v1.0.0",
+  "type": "live-verify",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "target_url": "http://localhost:8080",
+  "routes_ok": false,
+  "first_paint_live": "unknown",
+  "headers_ok": false,
+  "verified_at": "2026-07-24T16:20:00Z"
+}
