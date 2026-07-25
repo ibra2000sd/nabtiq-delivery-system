@@ -11,6 +11,10 @@ on:
         description: "project dir under projects/ to deploy"
         required: true
         default: "demo-fixed"
+      domain:
+        description: "public host to publish to (Traefik router), e.g. test.nabtiq.com"
+        required: true
+        default: "test.nabtiq.com"
 permissions:
   contents: read
 jobs:
@@ -38,11 +42,33 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
-      - name: Placeholder deploy step (wire your host here)
+      # Real deploy to the Traefik VPS. Runs only when the VPS secrets are configured, so the
+      # workflow never fails for a fork without infra. Set once (you handle credentials):
+      #   secret VPS_SSH_KEY        (private deploy key authorized on the VPS)
+      #   secret VPS_SSH_TARGET     e.g. deploy@45.9.188.149
+      #   secret VPS_KNOWN_HOSTS    output of: ssh-keyscan 45.9.188.149
+      #   var    TRAEFIK_NETWORK    external docker network Traefik watches (discover on the VPS)
+      #   var    TRAEFIK_CERTRESOLVER  Traefik ACME resolver name (discover on the VPS)
+      - name: Deploy to Traefik VPS (static site, auto Let's Encrypt)
+        if: ${{ secrets.VPS_SSH_KEY != '' }}
+        env:
+          VPS_SSH_TARGET: ${{ secrets.VPS_SSH_TARGET }}
+          SITE_DOMAIN: ${{ github.event.inputs.domain }}
+          TRAEFIK_NETWORK: ${{ vars.TRAEFIK_NETWORK }}
+          TRAEFIK_CERTRESOLVER: ${{ vars.TRAEFIK_CERTRESOLVER }}
+          PROJECT_DIR: projects/${{ github.event.inputs.project }}
         run: |
-          echo "Gates + deploy-readiness passed for projects/${{ github.event.inputs.project }}."
-          echo "Wire your real deploy command here (e.g. rsync/CDN publish/host CLI)."
-          echo "Rollback target is recorded in release-candidate.json (atomic-rollback readiness)."
+          sudo apt-get update -qq && sudo apt-get install -y -qq gettext-base rsync
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          echo "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_deploy
+          bash scripts/deploy_vps.sh
+      - name: No VPS secrets — deploy skipped (gates still enforced)
+        if: ${{ secrets.VPS_SSH_KEY == '' }}
+        run: |
+          echo "::notice::VPS_SSH_KEY not set — real deploy skipped. Gates + deploy-readiness passed."
+          echo "Set VPS_SSH_KEY / VPS_SSH_TARGET / VPS_KNOWN_HOSTS + TRAEFIK_NETWORK / TRAEFIK_CERTRESOLVER to enable."
       - name: Post-deploy live verification gate
         run: python3 probes/live_verify.py "projects/${{ github.event.inputs.project }}"
       - name: Monitoring must be ARMED after deploy

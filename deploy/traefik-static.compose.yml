@@ -1,0 +1,32 @@
+# Per-site static container behind the VPS's existing Traefik (auto Let's Encrypt SSL).
+# One of these is generated per deployed domain by scripts/deploy_vps.sh.
+# The VPS-specific values are injected from the environment (discovered once, see the runbook):
+#   SITE_SERVICE     unique service/router name, e.g. test-nabtiq-com
+#   SITE_DOMAIN      the public host, e.g. test.nabtiq.com
+#   TRAEFIK_NETWORK  the external docker network Traefik watches (discover on the VPS)
+#   TRAEFIK_CERTRESOLVER  the Traefik ACME resolver name (discover on the VPS)
+services:
+  ${SITE_SERVICE}:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${TRAEFIK_NETWORK}"
+      - "traefik.http.routers.${SITE_SERVICE}.rule=Host(`${SITE_DOMAIN}`)"
+      - "traefik.http.routers.${SITE_SERVICE}.entrypoints=websecure"
+      - "traefik.http.routers.${SITE_SERVICE}.tls=true"
+      - "traefik.http.routers.${SITE_SERVICE}.tls.certresolver=${TRAEFIK_CERTRESOLVER}"
+      - "traefik.http.services.${SITE_SERVICE}.loadbalancer.server.port=80"
+      # optional HTTP->HTTPS redirect router
+      - "traefik.http.routers.${SITE_SERVICE}-web.rule=Host(`${SITE_DOMAIN}`)"
+      - "traefik.http.routers.${SITE_SERVICE}-web.entrypoints=web"
+      - "traefik.http.routers.${SITE_SERVICE}-web.middlewares=${SITE_SERVICE}-redirect"
+      - "traefik.http.middlewares.${SITE_SERVICE}-redirect.redirectscheme.scheme=https"
+    networks:
+      - traefik
+networks:
+  traefik:
+    external: true
+    name: ${TRAEFIK_NETWORK}
