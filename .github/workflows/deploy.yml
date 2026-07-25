@@ -47,14 +47,12 @@ jobs:
       #   secret VPS_SSH_KEY        (private deploy key authorized on the VPS)
       #   secret VPS_SSH_TARGET     e.g. deploy@45.9.188.149
       #   secret VPS_KNOWN_HOSTS    output of: ssh-keyscan 45.9.188.149
-      #   var    TRAEFIK_NETWORK    external docker network Traefik watches (discover on the VPS)
-      #   var    TRAEFIK_CERTRESOLVER  Traefik ACME resolver name (discover on the VPS)
+      #   var    TRAEFIK_CERTRESOLVER  Traefik ACME resolver name (this VPS: letsencrypt)
       - name: Deploy to Traefik VPS (static site, auto Let's Encrypt)
         if: ${{ secrets.VPS_SSH_KEY != '' }}
         env:
           VPS_SSH_TARGET: ${{ secrets.VPS_SSH_TARGET }}
           SITE_DOMAIN: ${{ github.event.inputs.domain }}
-          TRAEFIK_NETWORK: ${{ vars.TRAEFIK_NETWORK }}
           TRAEFIK_CERTRESOLVER: ${{ vars.TRAEFIK_CERTRESOLVER }}
           PROJECT_DIR: projects/${{ github.event.inputs.project }}
         run: |
@@ -68,7 +66,7 @@ jobs:
         if: ${{ secrets.VPS_SSH_KEY == '' }}
         run: |
           echo "::notice::VPS_SSH_KEY not set — real deploy skipped. Gates + deploy-readiness passed."
-          echo "Set VPS_SSH_KEY / VPS_SSH_TARGET / VPS_KNOWN_HOSTS + TRAEFIK_NETWORK / TRAEFIK_CERTRESOLVER to enable."
+          echo "Set VPS_SSH_KEY / VPS_SSH_TARGET / VPS_KNOWN_HOSTS + var TRAEFIK_CERTRESOLVER (letsencrypt) to enable."
       - name: Post-deploy live verification gate
         run: python3 probes/live_verify.py "projects/${{ github.event.inputs.project }}"
       - name: Monitoring must be ARMED after deploy

@@ -1,10 +1,17 @@
 # Per-site static container behind the VPS's existing Traefik (auto Let's Encrypt SSL).
 # One of these is generated per deployed domain by scripts/deploy_vps.sh.
-# The VPS-specific values are injected from the environment (discovered once, see the runbook):
-#   SITE_SERVICE     unique service/router name, e.g. test-nabtiq-com
-#   SITE_DOMAIN      the public host, e.g. test.nabtiq.com
-#   TRAEFIK_NETWORK  the external docker network Traefik watches (discover on the VPS)
-#   TRAEFIK_CERTRESOLVER  the Traefik ACME resolver name (discover on the VPS)
+#
+# Matches THIS VPS's proven pattern (verified on the live box): Traefik runs in HOST network
+# mode and reaches each site over that site's OWN per-compose bridge network — there is NO shared
+# external Traefik network. So we let compose create this site's default private network and add
+# NO `traefik.docker.network` label (the container is on exactly one network, so none is needed),
+# exactly like every live site already on the server. Traefik does a global HTTP→HTTPS redirect,
+# so no per-site redirect labels either.
+#
+# Injected from the environment (see the runbook):
+#   SITE_SERVICE          unique service/router name, e.g. test-nabtiq-com
+#   SITE_DOMAIN           the public host, e.g. test.nabtiq.com
+#   TRAEFIK_CERTRESOLVER  the Traefik ACME resolver name (this VPS: letsencrypt)
 services:
   ${SITE_SERVICE}:
     image: nginx:alpine
@@ -13,20 +20,10 @@ services:
       - ./site:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=${TRAEFIK_NETWORK}"
       - "traefik.http.routers.${SITE_SERVICE}.rule=Host(`${SITE_DOMAIN}`)"
       - "traefik.http.routers.${SITE_SERVICE}.entrypoints=websecure"
       - "traefik.http.routers.${SITE_SERVICE}.tls=true"
       - "traefik.http.routers.${SITE_SERVICE}.tls.certresolver=${TRAEFIK_CERTRESOLVER}"
       - "traefik.http.services.${SITE_SERVICE}.loadbalancer.server.port=80"
-      # optional HTTP->HTTPS redirect router
-      - "traefik.http.routers.${SITE_SERVICE}-web.rule=Host(`${SITE_DOMAIN}`)"
-      - "traefik.http.routers.${SITE_SERVICE}-web.entrypoints=web"
-      - "traefik.http.routers.${SITE_SERVICE}-web.middlewares=${SITE_SERVICE}-redirect"
-      - "traefik.http.middlewares.${SITE_SERVICE}-redirect.redirectscheme.scheme=https"
-    networks:
-      - traefik
-networks:
-  traefik:
-    external: true
-    name: ${TRAEFIK_NETWORK}
+    # No `networks:` block on purpose — compose creates <project>_default (this site's own
+    # private bridge), which host-mode Traefik reaches. This isolates the site from every other.

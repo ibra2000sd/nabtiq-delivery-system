@@ -3,10 +3,9 @@
 # The REAL agency deploy path (Rev 2 primitive #6: CI + events, not a skill). Idempotent.
 #
 # Prereqs (set once — you handle credentials, not this script):
-#   VPS_SSH_TARGET        e.g. deploy@45.9.188.149   (an SSH key must already authorize you)
+#   VPS_SSH_TARGET        e.g. root@45.9.188.149     (an SSH key must already authorize you)
 #   SITE_DOMAIN           e.g. test.nabtiq.com
-#   TRAEFIK_NETWORK       external docker network Traefik watches   (discover on the VPS once)
-#   TRAEFIK_CERTRESOLVER  Traefik ACME resolver name                (discover on the VPS once)
+#   TRAEFIK_CERTRESOLVER  Traefik ACME resolver name (this VPS: letsencrypt)
 #   PROJECT_DIR           project dir whose build/ to ship (default: projects/demo-fixed)
 #
 # It does NOT touch any other site on the VPS: it only rsyncs into a per-domain directory
@@ -14,10 +13,9 @@
 set -euo pipefail
 
 PROJECT_DIR="${PROJECT_DIR:-projects/demo-fixed}"
-: "${VPS_SSH_TARGET:?set VPS_SSH_TARGET, e.g. deploy@45.9.188.149}"
+: "${VPS_SSH_TARGET:?set VPS_SSH_TARGET, e.g. root@45.9.188.149}"
 : "${SITE_DOMAIN:?set SITE_DOMAIN, e.g. test.nabtiq.com}"
-: "${TRAEFIK_NETWORK:?set TRAEFIK_NETWORK (discover on the VPS)}"
-: "${TRAEFIK_CERTRESOLVER:?set TRAEFIK_CERTRESOLVER (discover on the VPS)}"
+: "${TRAEFIK_CERTRESOLVER:?set TRAEFIK_CERTRESOLVER (this VPS: letsencrypt)}"
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -37,8 +35,8 @@ echo "==> rsync site -> VPS (delete stale, never touches other sites)"
 rsync -az --delete "${BUILD}/" "${VPS_SSH_TARGET}:${REMOTE_DIR}/site/"
 
 echo "==> render compose for ${SITE_DOMAIN}"
-export SITE_SERVICE SITE_DOMAIN TRAEFIK_NETWORK TRAEFIK_CERTRESOLVER
-envsubst '${SITE_SERVICE} ${SITE_DOMAIN} ${TRAEFIK_NETWORK} ${TRAEFIK_CERTRESOLVER}' \
+export SITE_SERVICE SITE_DOMAIN TRAEFIK_CERTRESOLVER
+envsubst '${SITE_SERVICE} ${SITE_DOMAIN} ${TRAEFIK_CERTRESOLVER}' \
   < deploy/traefik-static.compose.yml > /tmp/${SITE_SERVICE}.compose.yml
 scp /tmp/${SITE_SERVICE}.compose.yml "${VPS_SSH_TARGET}:${REMOTE_DIR}/docker-compose.yml"
 
