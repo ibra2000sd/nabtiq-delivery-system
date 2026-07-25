@@ -1,29 +1,34 @@
-# Per-site static container behind the VPS's existing Traefik (auto Let's Encrypt SSL).
-# One of these is generated per deployed domain by scripts/deploy_vps.sh.
+# REFERENCE ONLY — scripts/deploy_vps.sh GENERATES the real compose per deploy, injecting the
+# security-headers middleware from the project's own security/headers.json (declared == actual).
+# This file documents the shape it produces for a project that declares the standard headers.
 #
-# Matches THIS VPS's proven pattern (verified on the live box): Traefik runs in HOST network
-# mode and reaches each site over that site's OWN per-compose bridge network — there is NO shared
-# external Traefik network. So we let compose create this site's default private network and add
-# NO `traefik.docker.network` label (the container is on exactly one network, so none is needed),
-# exactly like every live site already on the server. Traefik does a global HTTP→HTTPS redirect,
-# so no per-site redirect labels either.
+# Matches THIS VPS's proven pattern (verified live): Traefik runs in HOST network mode and reaches
+# each site over that site's OWN per-compose bridge network — there is NO shared external Traefik
+# network, and site containers carry NO `traefik.docker.network` label. Traefik does a global
+# HTTP→HTTPS redirect (308), so no per-site redirect labels. ACME resolver on this VPS: letsencrypt.
 #
-# Injected from the environment (see the runbook):
-#   SITE_SERVICE          unique service/router name, e.g. test-nabtiq-com
-#   SITE_DOMAIN           the public host, e.g. test.nabtiq.com
-#   TRAEFIK_CERTRESOLVER  the Traefik ACME resolver name (this VPS: letsencrypt)
+# The security middleware makes the LIVE origin send exactly the headers header_csp_scan requires
+# (HSTS, CSP with require-trusted-types-for, X-Content-Type-Options, Referrer-Policy,
+# Permissions-Policy) — so live_verify passes truthfully instead of the origin silently lacking them.
 services:
-  ${SITE_SERVICE}:
+  test-nabtiq-com:
     image: nginx:alpine
     restart: unless-stopped
     volumes:
       - ./site:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${SITE_SERVICE}.rule=Host(`${SITE_DOMAIN}`)"
-      - "traefik.http.routers.${SITE_SERVICE}.entrypoints=websecure"
-      - "traefik.http.routers.${SITE_SERVICE}.tls=true"
-      - "traefik.http.routers.${SITE_SERVICE}.tls.certresolver=${TRAEFIK_CERTRESOLVER}"
-      - "traefik.http.services.${SITE_SERVICE}.loadbalancer.server.port=80"
-    # No `networks:` block on purpose — compose creates <project>_default (this site's own
-    # private bridge), which host-mode Traefik reaches. This isolates the site from every other.
+      - "traefik.http.routers.test-nabtiq-com.rule=Host(`test.nabtiq.com`)"
+      - "traefik.http.routers.test-nabtiq-com.entrypoints=websecure"
+      - "traefik.http.routers.test-nabtiq-com.tls=true"
+      - "traefik.http.routers.test-nabtiq-com.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.test-nabtiq-com.middlewares=test-nabtiq-com-sec"
+      - "traefik.http.services.test-nabtiq-com.loadbalancer.server.port=80"
+      # security headers — injected by deploy_vps.sh from the project's security/headers.json:
+      - "traefik.http.middlewares.test-nabtiq-com-sec.headers.customresponseheaders.Content-Security-Policy=default-src 'self'; script-src 'self'; require-trusted-types-for 'script'"
+      - "traefik.http.middlewares.test-nabtiq-com-sec.headers.customresponseheaders.Strict-Transport-Security=max-age=63072000; includeSubDomains; preload"
+      - "traefik.http.middlewares.test-nabtiq-com-sec.headers.customresponseheaders.X-Content-Type-Options=nosniff"
+      - "traefik.http.middlewares.test-nabtiq-com-sec.headers.customresponseheaders.Referrer-Policy=strict-origin-when-cross-origin"
+      - "traefik.http.middlewares.test-nabtiq-com-sec.headers.customresponseheaders.Permissions-Policy=geolocation=(), camera=(), microphone=()"
+    # No `networks:` block — compose creates <project>_default (this site's own private bridge),
+    # which host-mode Traefik reaches. Isolated from every other site.

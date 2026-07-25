@@ -15,9 +15,18 @@ existing Traefik, which issues and renews Let's Encrypt SSL automatically per ho
 Traefik runs in **host network mode** and reaches each site over that site's OWN per-compose bridge
 network. There is **no shared external Traefik network**, and site containers carry **no
 `traefik.docker.network` label** (each is on exactly one network). Traefik does a **global
-HTTP→HTTPS redirect** at the entrypoint, so no per-site redirect labels are needed. ACME resolver
-is **`letsencrypt`** (HTTP-01 on the `web` entrypoint). `deploy/traefik-static.compose.yml` already
-matches this pattern — the only value to supply is `TRAEFIK_CERTRESOLVER=letsencrypt`.
+HTTP→HTTPS redirect** at the entrypoint (308 Permanent), so no per-site redirect labels are needed.
+ACME resolver is **`letsencrypt`** (HTTP-01 on the `web` entrypoint). The only value to supply is
+`TRAEFIK_CERTRESOLVER=letsencrypt`.
+
+## Security headers — declared == actual (why the deploy injects them)
+A bare `nginx:alpine` static container sends none of the security headers a real site needs, so the
+LIVE origin would fail `header_csp_scan`/`live_verify` even though the project *declares* headers in
+`security/headers.json`. `deploy_vps.sh` closes that gap: it reads the project's own
+`security/headers.json` and generates a Traefik **headers middleware** on the site's router that
+emits exactly those headers (HSTS, CSP incl. `require-trusted-types-for`, X-Content-Type-Options,
+Referrer-Policy, Permissions-Policy). So every deployed origin sends precisely what it declared —
+no hardcoded policy, per-project truthful. Verify with `curl -sSI https://<domain>`.
 
 ## Enable CI deploy (you set the credentials — the system never handles them)
 In the GitHub repo settings add:
