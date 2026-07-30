@@ -30,16 +30,30 @@ def main():
     for pg in pages:
         doc = load_json(pg)
         name = pg.name
-        # empty heading / temp language across text blocks
-        for b in doc.get("blocks", []):
-            heading = (b.get("heading") or "").strip()
-            body = (b.get("body") or "").strip()
-            if heading and not body:
-                rep.add(FAIL, f"{name}:{b.get('id','?')}", "heading with no body (empty section)")
-            for txt in (heading, body):
-                for pat in TEMP_PATTERNS:
-                    if re.search(pat, txt, re.IGNORECASE):
-                        rep.add(BLOCKED, f"{name}:{b.get('id','?')}", f"temporary/internal language found (/{pat}/)")
+        # Empty heading / temp language across the legacy neutral blocks and
+        # every actual localized block rendered by the Studio Alpha.
+        block_sets = [("neutral", doc.get("blocks", []))]
+        block_sets.extend(
+            (locale, localized.get("blocks", []))
+            for locale, localized in doc.get("locales", {}).items()
+        )
+        for locale, blocks in block_sets:
+            for b in blocks:
+                heading = (b.get("heading") or "").strip()
+                body = (b.get("body") or "").strip()
+                if heading and not body:
+                    rep.add(FAIL, f"{name}:{locale}:{b.get('id','?')}", "heading with no body (empty section)")
+                texts = [heading, body, b.get("statement", ""), b.get("note", "")]
+                for item in b.get("items", []):
+                    if isinstance(item, dict):
+                        texts.extend(
+                            str(item.get(key, ""))
+                            for key in ("heading", "body", "question", "answer", "label")
+                        )
+                for txt in texts:
+                    for pat in TEMP_PATTERNS:
+                        if re.search(pat, txt, re.IGNORECASE):
+                            rep.add(BLOCKED, f"{name}:{locale}:{b.get('id','?')}", f"temporary/internal language found (/{pat}/)")
 
         # essential-field resolution for product/service pages
         if doc.get("page_type") in ("product", "service"):

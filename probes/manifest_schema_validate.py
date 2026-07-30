@@ -28,8 +28,21 @@ def main():
     proj = project_dir(sys.argv)
     rep = Report("manifest_schema_validate")
     targets = []
-    if (proj / "truth-ledger.json").exists():
-        targets.append(proj / "truth-ledger.json")
+    for name in (
+        "truth-ledger.json",
+        "profile.json",
+        "brand.json",
+        "site-map.json",
+        "design-tokens.json",
+        "image-manifest.json",
+        "site-strategy.json",
+        "creative-direction.json",
+        "motion-spec.json",
+        "generation-plan.json",
+        "video-manifest.json",
+    ):
+        if (proj / name).exists():
+            targets.append(proj / name)
     if (proj / "index.json").exists():
         targets.append(proj / "index.json")
     if (proj / "pages").is_dir():

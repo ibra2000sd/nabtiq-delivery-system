@@ -1,0 +1,14 @@
+{
+  "name": "nabtiq-studio-alpha",
+  "version": "3.1.0-alpha.1",
+  "private": true,
+  "description": "Internal bilingual Corporate/Brochure website studio with governed creative and media production",
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests -v",
+    "test:first-paint": "bash scripts/first-paint.sh projects/alpha-corporate",
+    "check": "bash scripts/alpha-check.sh projects/alpha-corporate"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
