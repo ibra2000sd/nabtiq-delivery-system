@@ -1,2 +1,19 @@
-{ "id":"perf:demo-fixed","type":"perf-report","project":"demo-fixed",
-  "routes":[{"path":"/","lcp_ms":2100,"budget_lcp_ms":2500,"inp_ms":150,"budget_inp_ms":200,"cls":0.04,"budget_cls":0.1,"total_kb":420,"budget_kb":600}] }
+{
+  "id": "perf:demo-fixed",
+  "type": "perf-report",
+  "project": "demo-fixed",
+  "routes": [
+    {
+      "path": "/",
+      "lcp_ms": 2100,
+      "budget_lcp_ms": 2500,
+      "inp_ms": 150,
+      "budget_inp_ms": 200,
+      "cls": 0.04,
+      "budget_cls": 0.1,
+      "total_kb": 420,
+      "budget_kb": 600
+    }
+  ],
+  "content_hash": "sha256:9d2c3810192b29df4aa076461934a62cdc6172e90cf58fbd973cb6cd2b64aa47"
+}

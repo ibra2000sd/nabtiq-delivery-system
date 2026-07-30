@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion Direction Contract",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "status",
+    "principles",
+    "reduced_motion",
+    "interactions",
+    "approval"
+  ],
+  "properties": {
+    "type": { "const": "motion-spec" },
+    "status": { "enum": ["draft", "reviewed", "approved"] },
+    "interactions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "intent",
+          "trigger",
+          "properties",
+          "duration_ms",
+          "easing",
+          "reduced_motion_behavior",
+          "performance_risk"
+        ]
+      }
+    }
+  }
+}

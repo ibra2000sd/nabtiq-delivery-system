@@ -1,0 +1,325 @@
+{
+  "id": "page:alpha-corporate:home",
+  "type": "content-page",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:29c30a5b71d457cd5e5fb9751d56e12e9cd483e05c0c1e948cb29353db8eeb1f",
+  "page_type": "home",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "Complex routes. One clear direction.",
+      "body": "A fictional corporate story used to demonstrate the Alpha renderer."
+    }
+  ],
+  "locales": {
+    "en": {
+      "nav_label": "Home",
+      "claim_refs": [],
+      "seo": {
+        "title": "Nabtiq Atlas — Corporate/Brochure Alpha",
+        "description": "A fictional bilingual corporate website demonstrating the Nabtiq Alpha design system, media pipeline and static renderer."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "video_slot": "home.hero.motion",
+          "eyebrow": "Corporate / Brochure Alpha",
+          "heading": "Complex routes. One clear direction.",
+          "body": "A cinematic bilingual reference site that turns corporate complexity into a calm, credible and memorable digital experience.",
+          "primary_cta": {
+            "label": "Explore capabilities",
+            "href": "/en/capabilities/"
+          },
+          "secondary_cta": {
+            "label": "Our approach",
+            "href": "/en/about/"
+          },
+          "note": "Fictional demonstration content — replace it with owner-approved claims before publication.",
+          "scroll_label": "Discover"
+        },
+        {
+          "id": "system-signals",
+          "type": "metrics",
+          "items": [
+            {
+              "value": "AR / EN",
+              "label": "Native structural direction for both reading systems"
+            },
+            {
+              "value": "Light / Dark",
+              "label": "One semantic token system across both themes"
+            },
+            {
+              "value": "Desktop / Mobile",
+              "label": "Purpose-made hero compositions for each viewport"
+            }
+          ]
+        },
+        {
+          "id": "clarity",
+          "type": "cards",
+          "eyebrow": "One visual language",
+          "heading": "Every section has a job.",
+          "body": "The reference content is fictional. The composition demonstrates how a corporate story can remain clear while still feeling rich and immersive.",
+          "items": [
+            {
+              "heading": "Strategic clarity",
+              "body": "Lead with the visitor’s decision, then reveal the information needed to support it.",
+              "points": [
+                "Focused page purpose",
+                "Evidence-aware copy slots",
+                "Bilingual information parity"
+              ]
+            },
+            {
+              "heading": "Visual direction",
+              "body": "Use one controlled material system rather than adding isolated effects to individual sections.",
+              "points": [
+                "Semantic design tokens",
+                "Four glass depth levels",
+                "Responsive art direction"
+              ]
+            },
+            {
+              "heading": "Release confidence",
+              "body": "Make the site reproducible from source artifacts and block known quality failures before release.",
+              "points": [
+                "Deterministic static build",
+                "Decoded-asset validation",
+                "SEO and route checks"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material-system",
+          "type": "split",
+          "eyebrow": "Glass with a purpose",
+          "heading": "Depth communicates hierarchy.",
+          "body": "Glass is treated as a material contract: opacity, blur, border, highlight and fallback change together.",
+          "statement": "A luminous surface should guide attention without reducing readability or becoming decoration for its own sake.",
+          "points": [
+            "Navigation glass remains quiet and compact.",
+            "Surface glass groups related information.",
+            "Deep glass protects copy over cinematic media.",
+            "Solid fallbacks preserve meaning when blur is unavailable."
+          ]
+        },
+        {
+          "id": "journey",
+          "type": "route",
+          "eyebrow": "From signal to release",
+          "heading": "A repeatable creative journey.",
+          "body": "The Alpha demonstrates the connection between input contracts, visual production, generation and validation.",
+          "items": [
+            {
+              "heading": "Understand",
+              "body": "Capture the brief, audience, approved facts and language requirements."
+            },
+            {
+              "heading": "Direct",
+              "body": "Define the page map, creative direction, tokens and media slots."
+            },
+            {
+              "heading": "Generate",
+              "body": "Render localized pages and optimized responsive assets."
+            },
+            {
+              "heading": "Verify",
+              "body": "Check contracts, assets, routes, SEO, security and build weight."
+            }
+          ]
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "eyebrow": "Delivery clarity",
+          "heading": "Questions answered before production.",
+          "body": "Each answer is governed bilingual content, not text embedded in a visual asset.",
+          "items": [
+            {
+              "question": "Does the system publish AI media automatically?",
+              "answer": "No. Generation requires an explicit execute command, and a human must approve the hero still before motion production."
+            },
+            {
+              "question": "What happens when a visitor prefers reduced motion?",
+              "answer": "The hero video is paused and hidden, while the approved responsive poster remains visible."
+            },
+            {
+              "question": "Can the same project use a different visual direction?",
+              "answer": "Yes. Strategy, creative direction, design tokens and media manifests are separate versioned contracts."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "Internal Alpha",
+          "heading": "Built to be inspected, changed and rebuilt.",
+          "body": "Start from the reference project, replace the fictional inputs, then run the same deterministic build and quality gates.",
+          "primary_cta": {
+            "label": "See the process",
+            "href": "/en/about/"
+          }
+        }
+      ]
+    },
+    "ar": {
+      "nav_label": "الرئيسية",
+      "claim_refs": [],
+      "seo": {
+        "title": "نبتيق أطلس — النسخة التجريبية للمواقع المؤسسية",
+        "description": "موقع مؤسسي ثنائي اللغة لشركة افتراضية يعرض نظام التصميم ومسار الأصول ومولّد المواقع في نسخة نبتيق التجريبية."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "video_slot": "home.hero.motion",
+          "eyebrow": "نسخة المواقع المؤسسية",
+          "heading": "مسارات معقدة. وجهة واحدة واضحة.",
+          "body": "تجربة مرجعية سينمائية ثنائية اللغة تحوّل تعقيد الأعمال المؤسسية إلى حضور رقمي هادئ، موثوق، وسهل التذكّر.",
+          "primary_cta": {
+            "label": "استكشف القدرات",
+            "href": "/ar/capabilities/"
+          },
+          "secondary_cta": {
+            "label": "منهجنا",
+            "href": "/ar/about/"
+          },
+          "note": "محتوى تجريبي لشركة افتراضية — يجب استبداله بادعاءات يعتمدها المالك قبل النشر.",
+          "scroll_label": "اكتشف"
+        },
+        {
+          "id": "system-signals",
+          "type": "metrics",
+          "items": [
+            {
+              "value": "AR / EN",
+              "label": "بنية أصلية لاتجاهي القراءة العربي والإنجليزي"
+            },
+            {
+              "value": "فاتح / داكن",
+              "label": "نظام واحد للرموز الدلالية في النمطين"
+            },
+            {
+              "value": "مكتبي / جوّال",
+              "label": "تكوين بصري مستقل للهيرو في كل شاشة"
+            }
+          ]
+        },
+        {
+          "id": "clarity",
+          "type": "cards",
+          "eyebrow": "لغة بصرية واحدة",
+          "heading": "لكل قسم وظيفة واضحة.",
+          "body": "المحتوى المرجعي افتراضي. أما التكوين فيوضح كيف تظل القصة المؤسسية واضحة من دون أن تفقد ثراءها ومتعتها البصرية.",
+          "items": [
+            {
+              "heading": "وضوح استراتيجي",
+              "body": "نبدأ بالقرار الذي جاء الزائر لاتخاذه، ثم نظهر المعلومات التي تسنده.",
+              "points": [
+                "غرض واضح لكل صفحة",
+                "مساحات لمحتوى يستند إلى الأدلة",
+                "تكافؤ المعلومات بين اللغتين"
+              ]
+            },
+            {
+              "heading": "اتجاه بصري",
+              "body": "نستخدم نظام مواد منضبطاً بدلاً من إضافة مؤثرات منفصلة لكل قسم.",
+              "points": [
+                "رموز تصميم دلالية",
+                "أربعة مستويات للزجاج",
+                "إخراج بصري متجاوب"
+              ]
+            },
+            {
+              "heading": "ثقة عند الإصدار",
+              "body": "نبني الموقع من مصادر محددة، ونمنع أخطاء الجودة المعروفة قبل الإطلاق.",
+              "points": [
+                "بناء ثابت قابل للتكرار",
+                "فحص حقيقي لصلاحية الصور",
+                "فحص المسارات وتهيئة البحث"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material-system",
+          "type": "split",
+          "eyebrow": "زجاج له وظيفة",
+          "heading": "العمق يوضّح التسلسل.",
+          "body": "يُعامل الزجاج كعقد مادي متكامل؛ فتتغير الشفافية والضبابية والحافة والإضاءة والبديل الصلب معاً.",
+          "statement": "على السطح المضيء أن يقود الانتباه من دون أن يضعف القراءة أو يتحول إلى زينة منفصلة عن المعنى.",
+          "points": [
+            "زجاج التنقل هادئ ومضغوط.",
+            "زجاج السطح يجمع المعلومات المترابطة.",
+            "الزجاج العميق يحمي النص فوق المشهد السينمائي.",
+            "البديل الصلب يحفظ المعنى عند غياب دعم الضبابية."
+          ]
+        },
+        {
+          "id": "journey",
+          "type": "route",
+          "eyebrow": "من الإشارة إلى الإصدار",
+          "heading": "رحلة إبداعية قابلة للتكرار.",
+          "body": "توضح النسخة التجريبية الصلة بين عقود الإدخال والإنتاج البصري والتوليد والتحقق.",
+          "items": [
+            {
+              "heading": "نفهم",
+              "body": "نجمع الموجز والجمهور والحقائق المعتمدة ومتطلبات اللغة."
+            },
+            {
+              "heading": "نوجّه",
+              "body": "نحدد خريطة الصفحات والاتجاه الإبداعي والرموز ومساحات الأصول."
+            },
+            {
+              "heading": "نولّد",
+              "body": "نبني الصفحات المحلية والأصول المتجاوبة والمحسّنة."
+            },
+            {
+              "heading": "نتحقق",
+              "body": "نفحص العقود والأصول والمسارات والبحث والأمان ووزن البناء."
+            }
+          ]
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "eyebrow": "وضوح التسليم",
+          "heading": "أسئلة تُحسم قبل الإنتاج.",
+          "body": "كل إجابة محتوى ثنائي اللغة محكوم، وليست نصاً مضمّناً داخل أصل بصري.",
+          "items": [
+            {
+              "question": "هل ينشر النظام الوسائط المولدة تلقائياً؟",
+              "answer": "لا. يحتاج التوليد إلى أمر تنفيذ صريح، ويجب أن يعتمد إنسان صورة الهيرو الثابتة قبل إنتاج الحركة."
+            },
+            {
+              "question": "ماذا يحدث عندما يفضّل الزائر تقليل الحركة؟",
+              "answer": "يتوقف فيديو الهيرو ويختفي، وتبقى صورة الغلاف المتجاوبة المعتمدة ظاهرة."
+            },
+            {
+              "question": "هل يمكن للمشروع نفسه استخدام اتجاه بصري آخر؟",
+              "answer": "نعم. الاستراتيجية والاتجاه الإبداعي ورموز التصميم وبيانات الوسائط عقود منفصلة قابلة للإصدار."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "نسخة Alpha داخلية",
+          "heading": "بُنيت لتُفحص وتُعدّل وتُبنى من جديد.",
+          "body": "ابدأ من المشروع المرجعي، واستبدل المدخلات الافتراضية، ثم شغّل مسار البناء وفحوص الجودة نفسها.",
+          "primary_cta": {
+            "label": "شاهد المنهج",
+            "href": "/ar/about/"
+          }
+        }
+      ]
+    }
+  }
+}

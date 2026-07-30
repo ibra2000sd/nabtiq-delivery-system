@@ -1,0 +1,6 @@
+{
+  "findings": [],
+  "scanner_status": "reference-alpha-no-findings-declared",
+  "note": "This file is not evidence that an external SAST/SCA scan has run.",
+  "content_hash": "sha256:452f80610c294aad2421617c245b67a7929897f893c84bb51b844005e571ef9d"
+}

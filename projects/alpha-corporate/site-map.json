@@ -1,0 +1,86 @@
+{
+  "id": "site-map:alpha-corporate",
+  "type": "site-map",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:207a5eb2385a5c4ca12d7f990bea09c46759937e23149cf7c5245674de08c82e",
+  "default_locale": "en",
+  "routing": {
+    "mode": "locale-prefix-all",
+    "root_behavior": "chooser"
+  },
+  "locales": [
+    {
+      "code": "en",
+      "dir": "ltr",
+      "og_locale": "en_US",
+      "switch_label": "ع",
+      "ui": {
+        "skip": "Skip to content",
+        "nav": "Primary navigation",
+        "footer_nav": "Footer navigation",
+        "theme": "Toggle colour theme",
+        "menu": "Open navigation menu",
+        "credit": "Built by Nabtiq"
+      }
+    },
+    {
+      "code": "ar",
+      "dir": "rtl",
+      "og_locale": "ar_SA",
+      "switch_label": "EN",
+      "ui": {
+        "skip": "انتقل إلى المحتوى",
+        "nav": "التنقل الرئيسي",
+        "footer_nav": "روابط التذييل",
+        "theme": "تبديل النمط اللوني",
+        "menu": "فتح قائمة التنقل",
+        "credit": "بُني بواسطة نبتيق"
+      }
+    }
+  ],
+  "navigation": [
+    "home",
+    "about",
+    "capabilities",
+    "contact"
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "template": "home",
+      "source": "pages/home.content.json",
+      "paths": {
+        "en": "/en/",
+        "ar": "/ar/"
+      }
+    },
+    {
+      "id": "about",
+      "template": "standard",
+      "source": "pages/about.content.json",
+      "paths": {
+        "en": "/en/about/",
+        "ar": "/ar/about/"
+      }
+    },
+    {
+      "id": "capabilities",
+      "template": "standard",
+      "source": "pages/capabilities.content.json",
+      "paths": {
+        "en": "/en/capabilities/",
+        "ar": "/ar/capabilities/"
+      }
+    },
+    {
+      "id": "contact",
+      "template": "contact",
+      "source": "pages/contact.content.json",
+      "paths": {
+        "en": "/en/contact/",
+        "ar": "/ar/contact/"
+      }
+    }
+  ]
+}

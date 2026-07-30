@@ -1,6 +1,27 @@
-{ "id":"design-tokens:demo-goldenish","type":"design-tokens","schema_version":"2.2.0","project":"demo-goldenish",
-  "contrast_pairs":[
-    {"name":"body","fg":"#111111","bg":"#ffffff","over_image":false},
-    {"name":"muted-label","fg":"#999999","bg":"#ffffff","over_image":false},
-    {"name":"hero-caption","fg":"#ffffff","bg":"#000000","over_image":true}
-  ] }
+{
+  "id": "design-tokens:demo-goldenish",
+  "type": "design-tokens",
+  "schema_version": "2.2.0",
+  "project": "demo-goldenish",
+  "contrast_pairs": [
+    {
+      "name": "body",
+      "fg": "#111111",
+      "bg": "#ffffff",
+      "over_image": false
+    },
+    {
+      "name": "muted-label",
+      "fg": "#999999",
+      "bg": "#ffffff",
+      "over_image": false
+    },
+    {
+      "name": "hero-caption",
+      "fg": "#ffffff",
+      "bg": "#000000",
+      "over_image": true
+    }
+  ],
+  "content_hash": "sha256:211d6173e5fd373d947cf04f2c3a09268bf3b17715e6d9ba157e88703987b455"
+}

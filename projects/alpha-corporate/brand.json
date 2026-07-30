@@ -1,0 +1,27 @@
+{
+  "id": "brand:alpha-corporate",
+  "type": "brand",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:ef12aa15072493872037336a0463552c1462189c29c61e0e112ac0fb0ee15ee3",
+  "short_name": "NABTIQ ATLAS",
+  "name": {
+    "en": "Nabtiq Atlas",
+    "ar": "نبتيق أطلس"
+  },
+  "descriptor": {
+    "en": "Corporate systems, clearly delivered",
+    "ar": "أنظمة مؤسسية تُقدَّم بوضوح"
+  },
+  "website": "https://alpha.nabtiq.example",
+  "contact": {
+    "email": "hello@example.com",
+    "phone_display": "+000 000 000 000",
+    "phone_href": "tel:+000000000000"
+  },
+  "copyright_year": 2026,
+  "footer_note": {
+    "en": "A fictional company used to demonstrate the Nabtiq Corporate/Brochure Alpha.",
+    "ar": "شركة افتراضية تُستخدم لعرض نسخة نبتيق التجريبية للمواقع المؤسسية."
+  }
+}

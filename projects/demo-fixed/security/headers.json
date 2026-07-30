@@ -1,7 +1,10 @@
-{ "headers": {
-  "Content-Security-Policy": "default-src 'self'; script-src 'self'; require-trusted-types-for 'script'",
-  "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
-  "X-Content-Type-Options": "nosniff",
-  "Referrer-Policy": "strict-origin-when-cross-origin",
-  "Permissions-Policy": "geolocation=(), camera=(), microphone=()"
-} }
+{
+  "headers": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; require-trusted-types-for 'script'",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), camera=(), microphone=()"
+  },
+  "content_hash": "sha256:360d062d7705981483ed257ea80fa76a77ac61bd809acf16556a2a919f3d2753"
+}

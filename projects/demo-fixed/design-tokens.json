@@ -1,5 +1,21 @@
-{ "id":"design-tokens:demo-fixed","type":"design-tokens","schema_version":"2.2.0","project":"demo-fixed",
-  "contrast_pairs":[
-    {"name":"body","fg":"#111111","bg":"#ffffff","over_image":false},
-    {"name":"hero-caption","fg":"#ffffff","bg":"#000000","over_image":true}
-  ] }
+{
+  "id": "design-tokens:demo-fixed",
+  "type": "design-tokens",
+  "schema_version": "2.2.0",
+  "project": "demo-fixed",
+  "contrast_pairs": [
+    {
+      "name": "body",
+      "fg": "#111111",
+      "bg": "#ffffff",
+      "over_image": false
+    },
+    {
+      "name": "hero-caption",
+      "fg": "#ffffff",
+      "bg": "#000000",
+      "over_image": true
+    }
+  ],
+  "content_hash": "sha256:f817726fdd9feda8445575e99b95bbd7b22cf9d8b221016eeda99a2b93ffb2f1"
+}

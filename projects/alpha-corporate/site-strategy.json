@@ -1,0 +1,40 @@
+{
+  "id": "site-strategy:alpha-corporate",
+  "type": "site-strategy",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:855844d98ffcd44d7c642e53dca7131d9da88c761115216ea91e5789d8500b90",
+  "status": "approved",
+  "audiences": [
+    {
+      "id": "corporate-buyer",
+      "need": "Understand the company, its capabilities and the next action without decoding internal language.",
+      "decision": "Whether the company is credible enough to contact."
+    },
+    {
+      "id": "partner",
+      "need": "See a coherent operating story and evidence boundary in both languages.",
+      "decision": "Whether to begin a qualified conversation."
+    }
+  ],
+  "positioning": {
+    "category": "Fictional corporate systems company used only as an executable reference",
+    "value_proposition": "Turn complex corporate information into a calm bilingual experience.",
+    "differentiators": [
+      "One governed content and design contract",
+      "Independent Arabic and English quality review",
+      "Repeatable build and release evidence"
+    ]
+  },
+  "content_principles": [
+    "Lead with the visitor decision.",
+    "Tie claims to evidence.",
+    "Write each language naturally.",
+    "Use visual richness to clarify hierarchy."
+  ],
+  "approval": {
+    "status": "approved",
+    "reviewed_by": "reference-project-owner",
+    "note": "Approved only for the fictional Alpha reference."
+  }
+}

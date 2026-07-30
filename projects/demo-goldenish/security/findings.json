@@ -1,4 +1,20 @@
-{ "findings": [
-  { "id": "SCA-001", "tool": "sca", "severity": "High", "cve": "CVE-2025-9999", "kev": true, "status": "confirmed" },
-  { "id": "SAST-014", "tool": "sast", "severity": "High", "cwe": "CWE-79", "status": "untriaged" }
-] }
+{
+  "findings": [
+    {
+      "id": "SCA-001",
+      "tool": "sca",
+      "severity": "High",
+      "cve": "CVE-2025-9999",
+      "kev": true,
+      "status": "confirmed"
+    },
+    {
+      "id": "SAST-014",
+      "tool": "sast",
+      "severity": "High",
+      "cwe": "CWE-79",
+      "status": "untriaged"
+    }
+  ],
+  "content_hash": "sha256:4bd92d5bc67c9906602de434518ec78822d49ac29f4a738f2deb2fee09a71b31"
+}

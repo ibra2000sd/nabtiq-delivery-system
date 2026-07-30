@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Client Source Inventory",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "files",
+    "review"
+  ],
+  "properties": {
+    "type": { "const": "source-inventory" },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_path",
+          "bytes",
+          "sha256",
+          "mime",
+          "extraction",
+          "review_status"
+        ]
+      }
+    }
+  }
+}

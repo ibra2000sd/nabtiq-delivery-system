@@ -1,13 +1,22 @@
 {
   "id": "index:demo-fixed",
   "type": "project-index",
-  "schema_version": "2.2.0",
+  "schema_version": "3.1.0-alpha.1",
   "project": "demo-fixed",
   "profile": "corporate-brochure",
   "artifacts": {
     "truth-ledger": {
       "hash": "sha256:c760655bdf4f7676785b8d308d66cd81d3ec867f0dd6bbbaacd665a124d14efb",
+      "type": "truth-ledger",
       "claims": 3
+    },
+    "design-tokens": {
+      "hash": "sha256:f817726fdd9feda8445575e99b95bbd7b22cf9d8b221016eeda99a2b93ffb2f1",
+      "type": "design-tokens"
+    },
+    "image-manifest": {
+      "hash": "sha256:84a43412ebf9ec71c3e681b68a24e41b15ad88ad3f91f9aacd289075c1fc43ae",
+      "type": "image-manifest"
     }
   },
   "pages": [
@@ -19,5 +28,5 @@
   ],
   "event_count": 2,
   "note": "DERIVED read-model — rebuildable from Git + events; not authoritative.",
-  "content_hash": "sha256:d2114daa5f1d23d7df917032d6377a4ba2491b4baae0de8aac7b6eb024029dab"
+  "content_hash": "sha256:c9f676b59a19212ba73e29d0ee3f3bc2fae64443483959dfba20b616accc3139"
 }

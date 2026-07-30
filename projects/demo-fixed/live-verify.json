@@ -7,5 +7,6 @@
   "routes_ok": true,
   "first_paint_live": "pass",
   "headers_ok": true,
-  "verified_at": "2026-07-24T16:20:00Z"
+  "verified_at": "2026-07-24T16:20:00Z",
+  "content_hash": "sha256:c84be61b59e4039e541b4e0ac9d311913c6329daab1659b12e0cd837d91b63cf"
 }

@@ -1,1 +1,9 @@
-{ "block_on": ["kev", "exposed_secret", "confirmed", "accepted-high-confidence"] }
+{
+  "block_on": [
+    "kev",
+    "exposed_secret",
+    "confirmed",
+    "accepted-high-confidence"
+  ],
+  "content_hash": "sha256:f001f7102744b3a692096d7945b2742f9dda16fe1760ebb3424b8c0191b06df0"
+}

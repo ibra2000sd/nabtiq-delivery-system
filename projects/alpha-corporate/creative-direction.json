@@ -1,0 +1,58 @@
+{
+  "id": "creative-direction:alpha-corporate:signal-horizon",
+  "type": "creative-direction",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:30ee965557d8826e97e753d406329b2714b51a5364abfc54c02f86c4c482629a",
+  "status": "approved",
+  "name": "Signal Horizon",
+  "central_idea": "A clear luminous route emerges from a complex operating landscape.",
+  "visual_language": {
+    "palette": [
+      "midnight navy",
+      "petrol blue",
+      "warm amber",
+      "controlled copper"
+    ],
+    "lighting": "Blue-hour depth with a warm directional horizon.",
+    "materials": [
+      "smoked glass",
+      "water reflection",
+      "brushed metal",
+      "atmospheric light"
+    ],
+    "photography": "Cinematic commercial realism with negative space for bilingual copy.",
+    "prohibited": [
+      "embedded text",
+      "fake certificates",
+      "fake documentary facilities",
+      "decorative glass without hierarchy"
+    ]
+  },
+  "glass_profile": {
+    "intent": "Use depth to communicate hierarchy, not to decorate every surface.",
+    "depths": {
+      "nav": "quiet and compact",
+      "surface": "groups related information",
+      "deep": "protects copy over media",
+      "luminous": "signals the primary action"
+    },
+    "fallback": "Opaque semantic surface with equivalent contrast."
+  },
+  "hero": {
+    "narrative": "A port route becomes visible as the camera advances toward the horizon.",
+    "desktop_composition": "Wide central depth with safe copy regions on both outer thirds.",
+    "mobile_composition": "Portrait crop preserves the vessel and a single upper copy-safe region.",
+    "text_safe_zones": [
+      "left-third",
+      "right-third",
+      "upper-centre-mobile"
+    ],
+    "truth_label": "conceptual"
+  },
+  "approval": {
+    "status": "approved",
+    "reviewed_by": "reference-project-owner",
+    "note": "Creative approval applies only to the fictional reference."
+  }
+}

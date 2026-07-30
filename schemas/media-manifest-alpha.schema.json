@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nabtiq.example/schemas/media-manifest-alpha.schema.json",
+  "title": "Corporate/Brochure Alpha Media Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "pages",
+    "slots"
+  ],
+  "properties": {
+    "type": {
+      "const": "image-manifest"
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "slot_id",
+          "truth_label",
+          "status",
+          "renditions",
+          "provenance",
+          "alt_en",
+          "alt_ar"
+        ],
+        "properties": {
+          "truth_label": {
+            "enum": [
+              "conceptual",
+              "documentary"
+            ]
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "generated",
+              "qa-passed",
+              "approved"
+            ]
+          },
+          "renditions": {
+            "type": "object",
+            "required": [
+              "desktop",
+              "mobile",
+              "social",
+              "lqip"
+            ],
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "src",
+                "format",
+                "width",
+                "height",
+                "budget_kb",
+                "sha256"
+              ]
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "required": [
+              "mode",
+              "generator",
+              "source",
+              "source_sha256",
+              "prompt_version",
+              "human_review"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

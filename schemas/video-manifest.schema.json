@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Video Asset Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "slots"
+  ],
+  "properties": {
+    "type": { "const": "video-manifest" },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "slot_id",
+          "image_slot",
+          "status",
+          "truth_label",
+          "prompt_version",
+          "prompt",
+          "start_frame",
+          "duration_seconds",
+          "loop",
+          "muted",
+          "playsinline",
+          "resolution",
+          "aspect_ratio",
+          "desktop",
+          "mobile",
+          "provenance",
+          "human_review"
+        ]
+      }
+    }
+  }
+}

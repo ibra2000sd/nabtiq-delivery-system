@@ -1,0 +1,10 @@
+{
+  "privacy_notice_url": "/en/privacy/",
+  "lawful_basis": "consent",
+  "retention_days": 30,
+  "analytics_enabled": false,
+  "analytics_essential": false,
+  "consent_before_analytics": true,
+  "note": "No analytics or data-collection form is enabled in the reference build.",
+  "content_hash": "sha256:d067b90114289ff332d0f1caf9f07c6d990bae17fbf51e4fca3634149338299b"
+}

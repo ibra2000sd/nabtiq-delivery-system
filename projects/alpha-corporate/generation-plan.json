@@ -1,0 +1,31 @@
+{
+  "id": "generation-plan:alpha-corporate",
+  "type": "generation-plan",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:3c0047550c2cb5a41b0b8aa720a44ecf8c7880052db853a41f65e2b0a13b6d9d",
+  "providers": {
+    "image": {
+      "provider": "openai",
+      "model": "gpt-image-2-2026-04-21",
+      "env_key": "OPENAI_API_KEY",
+      "default_size": "1536x1024",
+      "default_quality": "high",
+      "request_mode": "explicit-execute-only"
+    },
+    "video": {
+      "provider": "luma-agents",
+      "model": "ray-3.2",
+      "env_key": "LUMA_AGENTS_API_KEY",
+      "default_resolution": "720p",
+      "default_duration": "5s",
+      "request_mode": "explicit-execute-only"
+    }
+  },
+  "safety": {
+    "explicit_execute_required": true,
+    "secrets_in_environment_only": true,
+    "human_frame_approval_before_video": true,
+    "documentary_generation_prohibited": true
+  }
+}

@@ -7,5 +7,6 @@
   "routes_ok": false,
   "first_paint_live": "unknown",
   "headers_ok": false,
-  "verified_at": "2026-07-24T16:20:00Z"
+  "verified_at": "2026-07-24T16:20:00Z",
+  "content_hash": "sha256:753ce7047a2a1e2e66fdb4af06122d4f38205a4597fb17b18b75b7d9f449bf43"
 }
