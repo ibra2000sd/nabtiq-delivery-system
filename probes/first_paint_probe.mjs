@@ -28,6 +28,7 @@ const CONDITIONS = [
   { name: 'mobile-dark-slow',   theme: 'dark',  mobile: true,  cache: 'cold', slow: true,  js: true },
   { name: 'desktop-light-nojs', theme: 'light', mobile: false, cache: 'warm', slow: false, js: false },
   { name: 'mobile-dark-io-dead',theme: 'dark',  mobile: true,  cache: 'cold', slow: false, js: true, ioDead: true },
+  { name: 'desktop-dark-reduced',theme: 'dark', mobile: false, cache: 'cold', slow: false, js: true, reduced: true },
 ];
 
 let failures = 0;
@@ -39,11 +40,12 @@ for (const page of manifest.pages || [{ path: '/' }]) {
     const ctx = await browser.newContext({
       ...(c.mobile ? PIN.mobile : { viewport: PIN.viewportDesktop }),
       colorScheme: c.theme, javaScriptEnabled: c.js,
+      reducedMotion: c.reduced ? 'reduce' : 'no-preference',
     });
     const svgReqs = [];
     const p = await ctx.newPage();
     p.on('request', r => { if (r.url().match(/\.svg(\?|$)/i)) svgReqs.push(r.url()); });
-    if (c.ioDead) await p.route(/\.(avif|webp|png|jpe?g)(\?|$)/i, r => r.abort('failed')); // IO-dead: fail fast; page must still paint its layout
+    if (c.ioDead) await p.route(/\.(avif|webp|png|jpe?g|webm|mp4)(\?|$)/i, r => r.abort('failed')); // IO-dead: fail fast; page must still paint its layout
     if (c.slow) await ctx.route('**/*', r => setTimeout(() => r.continue(), 200));
     await p.goto(new URL(page.path, BASE).href, { waitUntil: 'commit' }).catch(() => {});
     // capture first frames vs post-wait
@@ -54,6 +56,38 @@ for (const page of manifest.pages || [{ path: '/' }]) {
     const prohibitsSvg = (manifest.slots || []).some(s => Array.isArray(s.prohibited) && s.prohibited.includes('svg-fallback'));
     if (prohibitsSvg && svgReqs.length) fail(`${page.path}:${c.name}`, `SVG request(s) where prohibited: ${svgReqs[0]}`);
     if (!late) fail(`${page.path}:${c.name}`, 'no post-wait paint (image disappearance / IO-dead not handled)');
+    const hero = await p.locator('.hero img').first();
+    const heroCount = await hero.count();
+    if (!heroCount) {
+      fail(`${page.path}:${c.name}`, 'no hero image element');
+    } else {
+      const state = await hero.evaluate(img => ({
+        complete: img.complete,
+        naturalWidth: img.naturalWidth,
+        visible: Boolean(img.getClientRects().length),
+      })).catch(() => ({ complete: false, naturalWidth: 0, visible: false }));
+      if (!state.visible) fail(`${page.path}:${c.name}`, 'hero is not visible');
+      if (!c.ioDead && (!state.complete || state.naturalWidth < 1)) {
+        fail(`${page.path}:${c.name}`, 'hero did not decode');
+      }
+      if (c.ioDead) {
+        const layoutVisible = await p.locator('.hero__panel').isVisible().catch(() => false);
+        if (!layoutVisible) fail(`${page.path}:${c.name}`, 'hero fallback lost the copy/layout when image IO failed');
+      }
+    }
+    const video = p.locator('[data-hero-video]').first();
+    if (await video.count()) {
+      const state = await video.evaluate(item => ({
+        paused: item.paused,
+        ready: item.closest('.hero')?.hasAttribute('data-video-ready') || false,
+      }));
+      if (c.reduced && (!state.paused || state.ready)) {
+        fail(`${page.path}:${c.name}`, 'reduced-motion did not preserve the poster-only state');
+      }
+      if (c.ioDead && state.ready) {
+        fail(`${page.path}:${c.name}`, 'failed video IO hid the static poster');
+      }
+    }
     await ctx.close();
   }
 }
