@@ -25,9 +25,11 @@ jobs:
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - name: Full gate chain must PASS (incl. deploy_readiness / live_verify / monitoring)
-        run: bash scripts/run-checks.sh "projects/${{ github.event.inputs.project }}"
+        env: { PROJECT: "${{ github.event.inputs.project }}" }
+        run: bash scripts/run-checks.sh "projects/$PROJECT"
       - name: Deploy-readiness gate (rollback + authenticated deployment-authorization event)
-        run: python3 probes/deploy_readiness.py "projects/${{ github.event.inputs.project }}"
+        env: { PROJECT: "${{ github.event.inputs.project }}" }
+        run: python3 probes/deploy_readiness.py "projects/$PROJECT"
 
   deploy:
     needs: deploy-gate
@@ -38,6 +40,9 @@ jobs:
     permissions:
       contents: read
       id-token: write        # OIDC identity of the deploy run (for provider auth / attestation)
+    env:
+      # `secrets` is not allowed in step `if:` expressions — expose presence via env instead.
+      VPS_KEY_SET: ${{ secrets.VPS_SSH_KEY != '' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -49,7 +54,7 @@ jobs:
       #   secret VPS_KNOWN_HOSTS    output of: ssh-keyscan 45.9.188.149
       #   var    TRAEFIK_CERTRESOLVER  Traefik ACME resolver name (this VPS: letsencrypt)
       - name: Deploy to Traefik VPS (static site, auto Let's Encrypt)
-        if: ${{ secrets.VPS_SSH_KEY != '' }}
+        if: ${{ env.VPS_KEY_SET == 'true' }}
         env:
           VPS_SSH_TARGET: ${{ secrets.VPS_SSH_TARGET }}
           SITE_DOMAIN: ${{ github.event.inputs.domain }}
@@ -63,11 +68,13 @@ jobs:
           eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_deploy
           bash scripts/deploy_vps.sh
       - name: No VPS secrets — deploy skipped (gates still enforced)
-        if: ${{ secrets.VPS_SSH_KEY == '' }}
+        if: ${{ env.VPS_KEY_SET != 'true' }}
         run: |
           echo "::notice::VPS_SSH_KEY not set — real deploy skipped. Gates + deploy-readiness passed."
           echo "Set VPS_SSH_KEY / VPS_SSH_TARGET / VPS_KNOWN_HOSTS + var TRAEFIK_CERTRESOLVER (letsencrypt) to enable."
       - name: Post-deploy live verification gate
-        run: python3 probes/live_verify.py "projects/${{ github.event.inputs.project }}"
+        env: { PROJECT: "${{ github.event.inputs.project }}" }
+        run: python3 probes/live_verify.py "projects/$PROJECT"
       - name: Monitoring must be ARMED after deploy
-        run: python3 probes/monitoring_state_check.py "projects/${{ github.event.inputs.project }}"
+        env: { PROJECT: "${{ github.event.inputs.project }}" }
+        run: python3 probes/monitoring_state_check.py "projects/$PROJECT"
