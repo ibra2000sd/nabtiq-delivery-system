@@ -41,7 +41,19 @@ Source: https://docs.github.com/en/actions/security-for-github-actions/using-art
 ## What this repo wires
 - `.claude/agents/*.md` — fresh-context reviewers (valid frontmatter).
 - `.claude/skills/*/SKILL.md` — capability skills (Agent Skills standard).
+- `studio-delivery` — full real-client conductor; `new-project` remains the guided scaffold flow.
+- Creative, motion, media-production and migration skills with matching independent reviewers.
 - `.claude/settings.json` + `.claude/hooks/post_edit_check.py` — correct stdin-JSON hook.
 - `.github/workflows/gates.yml` — python gates + self-test + **real build-provenance attestation** of gate evidence.
 - `.github/workflows/claude-review.yml` — optional PR review via `claude-code-action@v1` (needs the secret;
   gated behind the `ENABLE_CLAUDE_REVIEW` repo variable so it stays off until you turn it on).
+
+## Safe opening prompt
+
+```text
+Use the studio-delivery skill in this repository to rebuild this client website.
+Start by inventorying supplied files and the current public URL, then establish the truth ledger.
+Do not reuse the fictional reference copy as client fact. Ask one blocking question at a time.
+Do not call paid media APIs, deploy, change DNS, or publish until I approve each action explicitly.
+Run the build gate after every completed stage and use fresh-context reviewers.
+```
