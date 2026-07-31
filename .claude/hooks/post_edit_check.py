@@ -42,6 +42,19 @@ def main():
         probes = ["contrast_audit"]
     elif name == "perf-report.json":
         probes = ["perf_budget_check"]
+    elif name in ("site-strategy.json", "creative-direction.json", "motion-spec.json",
+                  "generation-plan.json"):
+        subprocess.run([sys.executable, str(root / "scripts" / "seal.py"), fp],
+                       cwd=root, capture_output=True)
+        probes = ["studio_contract_check"]
+    elif name == "video-manifest.json":
+        subprocess.run([sys.executable, str(root / "scripts" / "seal.py"), fp],
+                       cwd=root, capture_output=True)
+        probes = ["studio_contract_check", "video_asset_check"]
+    elif name in ("site-map.json", "brand.json"):
+        subprocess.run([sys.executable, str(root / "scripts" / "seal.py"), fp],
+                       cwd=root, capture_output=True)
+        probes = ["site_contract_check"]
     elif name == "release-candidate.json":
         probes = ["deploy_readiness"]
     elif name == "live-verify.json":
