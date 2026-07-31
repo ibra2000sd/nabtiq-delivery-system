@@ -7,5 +7,6 @@
   "commit": "e4f7fcaa",
   "gates_green": true,
   "rollback_target": "release:demo-fixed/v0.9.3",
-  "created_at": "2026-07-24T16:10:00Z"
+  "created_at": "2026-07-24T16:10:00Z",
+  "content_hash": "sha256:b77e8992e23ffd53127fcf23fbbf1bfd49dd5bbbb343caa943c3af50248704e5"
 }

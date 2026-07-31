@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nabtiq Site Strategy",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "status",
+    "audiences",
+    "positioning",
+    "content_principles",
+    "approval"
+  ],
+  "properties": {
+    "type": { "const": "site-strategy" },
+    "status": { "enum": ["draft", "reviewed", "approved"] },
+    "audiences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "need", "decision"]
+      }
+    },
+    "approval": {
+      "type": "object",
+      "required": ["status", "reviewed_by"]
+    }
+  }
+}

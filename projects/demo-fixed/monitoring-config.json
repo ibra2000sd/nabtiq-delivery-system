@@ -8,5 +8,6 @@
   "error_tracking": true,
   "dep_vuln_watch": true,
   "content_freshness": "monthly",
-  "armed_at": "2026-07-24T16:25:00Z"
+  "armed_at": "2026-07-24T16:25:00Z",
+  "content_hash": "sha256:370009ac87228aafe7d290759f9316bc83250f90eb3d9a0441af1521669869b6"
 }

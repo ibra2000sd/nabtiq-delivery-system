@@ -14,6 +14,10 @@ the work, you run the gate, you show the result, and you only advance when it is
 required approval is recorded. Ask **one focused thing at a time**, starting with the project
 name. Never dump the whole questionnaire at once.
 
+When the user supplies a real client package or asks to replace an existing website, use the broader
+**`studio-delivery`** conductor. It adds source inventory, current-site migration, creative direction,
+motion direction, still/video production, independent review, and the same release controls.
+
 ## Invariants that hold in EVERY session (never bypass, even in a hurry)
 
 1. **Never invent an essential fact — ASK.** Company name, founding year, license/CR number,
@@ -22,7 +26,8 @@ name. Never dump the whole questionnaire at once.
    plausible guess. (The blind forward-test proved a plausible-but-false claim is exactly what
    the automated gate will NOT catch.)
 2. **Parity of FACTS, not words**, across Arabic and English. Numbers, dates, names must match.
-3. **Gates are the hard enforcement.** After each stage run `scripts/run-checks.sh projects/<slug>`
+3. **Gates are the hard enforcement.** After each build stage run
+   `scripts/run-checks.sh projects/<slug> build`
    and DO NOT advance the interview while any probe is BLOCKED/FAIL. Fix, re-run, then continue.
 4. **High-risk publish, deploy, live-verify, and indexing require an AUTHENTICATED approval
    event** (`events/*.jsonl`, `issuer != author`, role owner/release-manager). Ask the user to
@@ -34,7 +39,17 @@ name. Never dump the whole questionnaire at once.
    (e.g. Hostinger static deploy + DNS) is wired only when the user asks.
 
 ## Where state lives
-`projects/<slug>/` is the whole project memory: `profile.json`, `truth-ledger.json`,
-`pages/*.content.json`, `image-manifest.json`, `design-tokens.json`, `security/*`,
+`projects/<slug>/` is the whole project memory: `profile.json`, `brand.json`,
+`site-map.json`, `truth-ledger.json`, `pages/*.content.json`, `image-manifest.json`,
+`video-manifest.json`, `site-strategy.json`, `creative-direction.json`, `motion-spec.json`,
+`generation-plan.json`, `design-tokens.json`, `security/*`,
 `perf-report.json`, `release-candidate.json`, `live-verify.json`, `monitoring-config.json`,
-and `events/*.jsonl` (the audit trail). Copy `projects/demo-fixed` as a shape reference.
+and `events/*.jsonl` (the audit trail). For the implemented Corporate/Brochure Alpha,
+create a project with `scripts/new_project.py`; do not copy a legacy demo.
+
+## External media execution
+
+`scripts/media_pipeline.py` defaults to dry-run. `--execute` is an explicit authorization boundary:
+it may create paid provider jobs. Image generation reads `OPENAI_API_KEY`; video generation reads
+`LUMA_AGENTS_API_KEY`. Values belong only in the operator environment and must never be written to
+project artifacts, prompts, logs, commits, or delivery archives.

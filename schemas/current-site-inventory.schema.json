@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Current Website Inventory",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "start_url",
+    "same_origin",
+    "max_pages",
+    "pages",
+    "review"
+  ],
+  "properties": {
+    "type": { "const": "current-site-inventory" },
+    "start_url": { "type": "string", "pattern": "^https://" },
+    "pages": { "type": "array" }
+  }
+}

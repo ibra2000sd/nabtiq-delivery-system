@@ -1,0 +1,141 @@
+{
+  "id": "page:alpha-corporate:contact",
+  "type": "content-page",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:739f860a3b75a0884659330bc5af5f13e0e8cccb2617030cc59ac53e12883afb",
+  "page_type": "contact",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "Start with a clear brief.",
+      "body": "Demonstration contact details for the fictional reference company."
+    }
+  ],
+  "locales": {
+    "en": {
+      "nav_label": "Contact",
+      "claim_refs": [],
+      "seo": {
+        "title": "Contact — Nabtiq Atlas",
+        "description": "Demonstration contact page for the fictional Nabtiq Atlas Corporate/Brochure Alpha reference project."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "Contact",
+          "heading": "Start with a clear brief.",
+          "body": "For a real project, replace these demonstration channels with verified contact details before the publication gate.",
+          "primary_cta": {
+            "label": "Send an email",
+            "href": "mailto:hello@example.com"
+          },
+          "note": "No form, analytics or data collection is enabled in this reference build.",
+          "scroll_label": "Channels"
+        },
+        {
+          "id": "channels",
+          "type": "contact",
+          "eyebrow": "Demonstration channels",
+          "heading": "Choose the direct route.",
+          "body": "These addresses use reserved example data. They are deliberately not connected to a real company.",
+          "channels": [
+            {
+              "label": "Email",
+              "value": "hello@example.com",
+              "href": "mailto:hello@example.com"
+            },
+            {
+              "label": "Telephone",
+              "value": "+000 000 000 000",
+              "href": "tel:+000000000000"
+            },
+            {
+              "label": "Nabtiq",
+              "value": "nabtiq.com",
+              "href": "https://nabtiq.com"
+            }
+          ]
+        },
+        {
+          "id": "handoff",
+          "type": "split",
+          "eyebrow": "Before publishing",
+          "heading": "Replace, verify, approve.",
+          "body": "Contact information is an essential business fact and should never be inferred from visual references.",
+          "statement": "A beautiful contact page is still wrong if it sends a visitor to an unverified address.",
+          "points": [
+            "Replace all example domains and numbers.",
+            "Confirm the preferred channel with the owner.",
+            "Add a privacy notice before enabling data collection.",
+            "Run the build-stage checks again."
+          ]
+        }
+      ]
+    },
+    "ar": {
+      "nav_label": "تواصل معنا",
+      "claim_refs": [],
+      "seo": {
+        "title": "تواصل معنا — نبتيق أطلس",
+        "description": "صفحة تواصل تجريبية للمشروع المرجعي الافتراضي لنسخة نبتيق الداخلية للمواقع المؤسسية."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "تواصل معنا",
+          "heading": "ابدأ بموجز واضح.",
+          "body": "في المشروع الحقيقي، استبدل قنوات العرض هذه ببيانات تواصل مؤكدة قبل بوابة النشر.",
+          "primary_cta": {
+            "label": "أرسل بريداً",
+            "href": "mailto:hello@example.com"
+          },
+          "note": "لا توجد استمارة أو تحليلات أو عملية جمع بيانات في هذا البناء المرجعي.",
+          "scroll_label": "القنوات"
+        },
+        {
+          "id": "channels",
+          "type": "contact",
+          "eyebrow": "قنوات تجريبية",
+          "heading": "اختر المسار المباشر.",
+          "body": "تستخدم هذه العناوين بيانات مخصصة للأمثلة، ولا ترتبط عمداً بأي شركة حقيقية.",
+          "channels": [
+            {
+              "label": "البريد الإلكتروني",
+              "value": "hello@example.com",
+              "href": "mailto:hello@example.com"
+            },
+            {
+              "label": "الهاتف",
+              "value": "+000 000 000 000",
+              "href": "tel:+000000000000"
+            },
+            {
+              "label": "نبتيق",
+              "value": "nabtiq.com",
+              "href": "https://nabtiq.com"
+            }
+          ]
+        },
+        {
+          "id": "handoff",
+          "type": "split",
+          "eyebrow": "قبل النشر",
+          "heading": "استبدل. تحقّق. اعتمد.",
+          "body": "بيانات التواصل حقيقة أساسية في النشاط، ولا ينبغي استنتاجها من المراجع البصرية.",
+          "statement": "تظل صفحة التواصل الجميلة خاطئة إذا قادت الزائر إلى عنوان غير موثّق.",
+          "points": [
+            "استبدل جميع النطاقات والأرقام التجريبية.",
+            "أكد قناة التواصل المفضلة مع المالك.",
+            "أضف إشعار الخصوصية قبل تفعيل جمع البيانات.",
+            "أعد تشغيل فحوص مرحلة البناء."
+          ]
+        }
+      ]
+    }
+  }
+}

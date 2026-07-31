@@ -7,5 +7,6 @@
   "rum": false,
   "error_tracking": false,
   "dep_vuln_watch": false,
-  "content_freshness": null
+  "content_freshness": null,
+  "content_hash": "sha256:da7ff73f32debc6ef0777589cf3b7327af66c53fa2c877c389913b0c570643f2"
 }

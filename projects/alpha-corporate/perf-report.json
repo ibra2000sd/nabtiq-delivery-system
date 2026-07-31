@@ -1,0 +1,6 @@
+{
+  "routes": [],
+  "status": "not-measured",
+  "note": "Measured browser performance must be added by CI or a live review. Build weight is checked directly by build_output_check.py.",
+  "content_hash": "sha256:0fcd4843a281178c10b09111b4c7c3366ca08f793229fd567701ff9efa910632"
+}

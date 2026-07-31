@@ -1,0 +1,102 @@
+{
+  "id": "image-manifest:alpha-corporate",
+  "type": "image-manifest",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:ec6b15a4529744a98c6e71fcc5943504f9fb29896ee1be389af70b7f196403d4",
+  "pages": [
+    {
+      "path": "/en/"
+    },
+    {
+      "path": "/ar/"
+    },
+    {
+      "path": "/en/capabilities/"
+    },
+    {
+      "path": "/ar/capabilities/"
+    }
+  ],
+  "slots": [
+    {
+      "slot_id": "home.hero",
+      "page": "all",
+      "section": "hero",
+      "why_needed": "Provide a high-impact visual system for the reference Corporate/Brochure site.",
+      "narrative_function": "Connection, scale, direction and calm operational confidence.",
+      "subject": "Conceptual global trade scene at a modern seaport.",
+      "desktop_crop": "16:9",
+      "mobile_crop": "3:4",
+      "focal_point": [
+        0.5,
+        0.58
+      ],
+      "text_safe_zones": [
+        "left-third",
+        "right-third"
+      ],
+      "light_variant": true,
+      "dark_variant": true,
+      "truth_label": "conceptual",
+      "documentary_source": null,
+      "prohibited": [
+        "embedded-text",
+        "logo",
+        "fake-certificate",
+        "documentary-claim"
+      ],
+      "fallback": "lqip",
+      "asset": "assets/hero-desktop.webp",
+      "alt_en": "Conceptual cargo vessel moving between modern ports at sunrise",
+      "alt_ar": "مشهد مفاهيمي لسفينة شحن تتحرك بين موانئ حديثة وقت الشروق",
+      "loading_priority": "high",
+      "perf_budget_kb": 180,
+      "status": "approved",
+      "renditions": {
+        "desktop": {
+          "src": "assets/hero-desktop.webp",
+          "format": "webp",
+          "width": 1920,
+          "height": 1080,
+          "budget_kb": 180,
+          "sha256": "35ab2542f78a60bd94e4de477353a77a54533356d6b8223ab5831dc69ef1195e"
+        },
+        "mobile": {
+          "src": "assets/hero-mobile.webp",
+          "format": "webp",
+          "width": 900,
+          "height": 1200,
+          "budget_kb": 90,
+          "sha256": "8a78370529237ef3ec12e4023f30dc891ffc4c568cde21afac570d020c1213ae"
+        },
+        "social": {
+          "src": "assets/hero-social.webp",
+          "format": "webp",
+          "width": 1200,
+          "height": 630,
+          "budget_kb": 120,
+          "sha256": "09c41150069a2046dd2e9f9c79cc883c888c7b7295790974f366f672e0227a80"
+        },
+        "lqip": {
+          "src": "assets/hero-lqip.webp",
+          "format": "webp",
+          "width": 64,
+          "height": 36,
+          "budget_kb": 4,
+          "sha256": "656b403de919744ff93b3c8de6e70807c2ce8b50c8fc5615d79f488780ec9c53"
+        }
+      },
+      "provenance": {
+        "mode": "ai-generated",
+        "generator": "built-in image generation tool",
+        "generated_at": "2026-07-31",
+        "source": "assets/source/hero-original.png",
+        "source_sha256": "629cdbfa941303c5955b7789f1b804f51e22fe415713e1c6685693a5be4aaa27",
+        "prompt_version": "hero-alpha-v1",
+        "prompt": "Use case: ads-marketing\nAsset type: bilingual corporate brochure website hero background\nPrimary request: a cinematic, premium global trade and logistics scene that feels contemporary, trustworthy, and visually striking at first glance\nScene/backdrop: a vast modern seaport at blue hour transitioning into warm sunrise, elegant container geometry, distant cranes, calm sea, subtle luminous route lines suggesting international connection without looking like a literal map\nSubject: the architecture, port, cargo movement, and light itself; no identifiable people\nStyle/medium: highly realistic cinematic commercial photography with refined editorial art direction, not science fiction\nComposition/framing: ultra-wide landscape composition; strong central depth; balanced usable negative space on both the left and right outer thirds so bilingual UI copy can sit on either side; clear focal point slightly below center; suitable for responsive cropping\nLighting/mood: deep navy shadows, warm amber highlights, soft volumetric atmosphere, controlled glow, high dynamic range, luxurious but credible\nColor palette: midnight navy, petrol blue, warm amber, subtle copper\nMaterials/textures: realistic steel, glass, water reflections, atmospheric haze\nConstraints: no text, no letters, no logos, no flags, no watermarks, no fake certificates, no impossible machinery, no dominant subject at the extreme edges\nAvoid: cyberpunk neon overload, fantasy, oversaturation, excessive lens flare, stock-photo look, people posing for camera",
+        "human_review": "Approved for the fictional Alpha reference project only."
+      }
+    }
+  ]
+}

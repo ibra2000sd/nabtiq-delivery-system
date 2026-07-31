@@ -1,0 +1,165 @@
+{
+  "id": "page:alpha-corporate:about",
+  "type": "content-page",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:fd22eb832552d03d29a50609f8a1ef5840b020eac3a16311d0fde78202f4f4a7",
+  "page_type": "about",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "A corporate story with a visible system.",
+      "body": "A fictional narrative demonstrating structured bilingual composition."
+    }
+  ],
+  "locales": {
+    "en": {
+      "nav_label": "Approach",
+      "claim_refs": [],
+      "seo": {
+        "title": "Approach — Nabtiq Atlas",
+        "description": "Explore the structured content, design and validation approach demonstrated by the fictional Nabtiq Atlas reference project."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "About the approach",
+          "heading": "A corporate story with a visible system.",
+          "body": "Good corporate design is not a collection of effects. It is a sequence of decisions that can be traced from brand input to the final page.",
+          "primary_cta": {
+            "label": "Explore capabilities",
+            "href": "/en/capabilities/"
+          },
+          "note": "This is fictional demonstration copy.",
+          "scroll_label": "Our system"
+        },
+        {
+          "id": "principle",
+          "type": "split",
+          "eyebrow": "The principle",
+          "heading": "Direction before decoration.",
+          "body": "The Alpha keeps business facts, visual direction, media and rendering in separate contracts.",
+          "statement": "When every layer has a clear owner and output, creative ambition becomes easier to review, reproduce and improve.",
+          "points": [
+            "Content remains editable without rewriting templates.",
+            "Tokens keep pages and themes visually consistent.",
+            "Media slots define crops, fallbacks, budgets and provenance.",
+            "The build can be reproduced from the project directory."
+          ]
+        },
+        {
+          "id": "process",
+          "type": "steps",
+          "eyebrow": "Working sequence",
+          "heading": "Four controlled transitions.",
+          "body": "Each transition produces an inspectable artifact before the next one starts.",
+          "items": [
+            {
+              "heading": "Input becomes structure",
+              "body": "The sitemap and bilingual page contracts turn a broad brief into a finite website."
+            },
+            {
+              "heading": "Structure becomes direction",
+              "body": "Tokens and media slots define the visual behavior before the renderer assembles pages."
+            },
+            {
+              "heading": "Direction becomes a build",
+              "body": "One deterministic command produces all locale routes, assets and search files."
+            },
+            {
+              "heading": "The build becomes evidence",
+              "body": "Automated probes check what can be checked and explicitly label what still needs human review."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "Next layer",
+          "heading": "Inspect the system through its capabilities.",
+          "body": "The capability page connects content, material, motion and validation to concrete Alpha outputs.",
+          "primary_cta": {
+            "label": "View capabilities",
+            "href": "/en/capabilities/"
+          }
+        }
+      ]
+    },
+    "ar": {
+      "nav_label": "منهجنا",
+      "claim_refs": [],
+      "seo": {
+        "title": "المنهج — نبتيق أطلس",
+        "description": "تعرّف على منهج المحتوى والتصميم والتحقق المنظم في المشروع المرجعي الافتراضي لنبتيق أطلس."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "عن المنهج",
+          "heading": "قصة مؤسسية بنظام يمكن رؤيته.",
+          "body": "التصميم المؤسسي الجيد ليس مجموعة مؤثرات؛ بل سلسلة قرارات يمكن تتبعها من مدخلات العلامة حتى الصفحة النهائية.",
+          "primary_cta": {
+            "label": "استكشف القدرات",
+            "href": "/ar/capabilities/"
+          },
+          "note": "هذا محتوى تجريبي لشركة افتراضية.",
+          "scroll_label": "نظامنا"
+        },
+        {
+          "id": "principle",
+          "type": "split",
+          "eyebrow": "المبدأ",
+          "heading": "الاتجاه قبل الزينة.",
+          "body": "تفصل النسخة التجريبية بين حقائق النشاط والاتجاه البصري والأصول وعملية البناء في عقود مستقلة.",
+          "statement": "عندما تكون لكل طبقة مسؤولية ومخرجات واضحة، يصبح الطموح الإبداعي أسهل في المراجعة والتكرار والتحسين.",
+          "points": [
+            "يبقى المحتوى قابلاً للتعديل من دون إعادة كتابة القوالب.",
+            "تحافظ الرموز على اتساق الصفحات والأنماط.",
+            "تحدد مساحات الوسائط الاقتصاص والبدائل والميزانيات والمصدر.",
+            "يمكن إعادة بناء الموقع كاملاً من مجلد المشروع."
+          ]
+        },
+        {
+          "id": "process",
+          "type": "steps",
+          "eyebrow": "تسلسل العمل",
+          "heading": "أربعة انتقالات منضبطة.",
+          "body": "ينتج كل انتقال ملفاً قابلاً للفحص قبل بدء الخطوة التالية.",
+          "items": [
+            {
+              "heading": "تتحول المدخلات إلى بنية",
+              "body": "تحوّل خريطة الموقع وعقود الصفحات الثنائية الموجز الواسع إلى موقع محدود وواضح."
+            },
+            {
+              "heading": "تتحول البنية إلى اتجاه",
+              "body": "تحدد الرموز ومساحات الوسائط السلوك البصري قبل أن يجمع المولّد الصفحات."
+            },
+            {
+              "heading": "يتحول الاتجاه إلى بناء",
+              "body": "ينتج أمر واحد جميع المسارات المحلية والأصول وملفات محركات البحث."
+            },
+            {
+              "heading": "يتحول البناء إلى دليل",
+              "body": "تفحص الأدوات ما يمكن فحصه آلياً، وتحدد بصراحة ما يزال بحاجة إلى مراجعة بشرية."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "الطبقة التالية",
+          "heading": "استكشف النظام عبر قدراته.",
+          "body": "تربط صفحة القدرات بين المحتوى والمواد والحركة والتحقق ومخرجات النسخة التجريبية.",
+          "primary_cta": {
+            "label": "عرض القدرات",
+            "href": "/ar/capabilities/"
+          }
+        }
+      ]
+    }
+  }
+}

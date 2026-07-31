@@ -1,3 +1,12 @@
-{ "findings": [
-  { "id": "SAST-022", "tool": "sast", "severity": "High", "cwe": "CWE-89", "status": "untriaged" }
-] }
+{
+  "findings": [
+    {
+      "id": "SAST-022",
+      "tool": "sast",
+      "severity": "High",
+      "cwe": "CWE-89",
+      "status": "untriaged"
+    }
+  ],
+  "content_hash": "sha256:4885bca77150fa8b129dcdc139e25f4794f0fe5ddb1af422833901de661b62f7"
+}

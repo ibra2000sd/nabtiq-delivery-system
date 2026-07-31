@@ -1,0 +1,63 @@
+{
+  "id": "motion-spec:alpha-corporate",
+  "type": "motion-spec",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:76e318188407ae34d526306d6c7eb0667c902dd9a774d1329b4f1b6325cbf015",
+  "status": "approved",
+  "principles": [
+    "Motion reveals hierarchy and state.",
+    "Core meaning never depends on animation.",
+    "Prefer transform and opacity.",
+    "Cinematic media must have a static poster."
+  ],
+  "reduced_motion": {
+    "global_behavior": "Disable cinematic video playback, reveals, orbits and smooth scrolling.",
+    "poster_required": true,
+    "content_remains_visible": true
+  },
+  "interactions": [
+    {
+      "id": "section-reveal",
+      "intent": "Clarify reading order as sections enter the viewport.",
+      "trigger": "intersection",
+      "properties": [
+        "opacity",
+        "transform"
+      ],
+      "duration_ms": 620,
+      "easing": "cubic-bezier(.2,.75,.2,1)",
+      "reduced_motion_behavior": "instant-visible",
+      "performance_risk": "low"
+    },
+    {
+      "id": "pointer-light",
+      "intent": "Give luminous glass a restrained material response.",
+      "trigger": "pointermove",
+      "properties": [
+        "css-custom-property"
+      ],
+      "duration_ms": 80,
+      "easing": "linear",
+      "reduced_motion_behavior": "disabled",
+      "performance_risk": "low"
+    },
+    {
+      "id": "hero-loop",
+      "intent": "Add calm cinematic depth behind the primary message.",
+      "trigger": "page-ready",
+      "properties": [
+        "video-playback"
+      ],
+      "duration_ms": 5000,
+      "easing": "linear",
+      "reduced_motion_behavior": "poster-only",
+      "performance_risk": "medium"
+    }
+  ],
+  "approval": {
+    "status": "approved",
+    "reviewed_by": "reference-project-owner",
+    "note": "Motion approval applies only to the fictional reference."
+  }
+}

@@ -7,5 +7,6 @@
   "commit": "deadbeef",
   "gates_green": false,
   "rollback_target": null,
-  "created_at": "2026-07-24T16:10:00Z"
+  "created_at": "2026-07-24T16:10:00Z",
+  "content_hash": "sha256:bfd91e71be4a0322ccdb24afe8e83c428797b5f5ad23b48d9ac3f5ab4ab6706b"
 }

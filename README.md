@@ -1,171 +1,133 @@
-# Nabtiq Website-Delivery System — Wave 0 (foundation + live demo)
+# Nabtiq Studio Alpha 3.1
 
-This is the **first buildable slice** of the Nabtiq system: the runtime/state layer, the core
-contracts, four runnable validation probes, one capability skill + two fresh-context reviewer
-agents for **Claude Code**, a CI gate — and a **live demo that catches a real error**.
+منظومة تشغيل داخلية لبناء مواقع **Corporate/Brochure** عربية–إنجليزية من ملفات العميل
+إلى Build ثابت قابل للتسليم. تعمل من سطر الأوامر أو داخل Claude Code، وتحفظ الاستراتيجية
+والمحتوى والاتجاه الإبداعي والوسائط والحركة كعقود قابلة للفحص وإعادة البناء.
 
-It deliberately does **not** implement all 15 candidate skills. Per the architecture (Revisions
-2 / 2.1 / 2.2), we build the foundation + a vertical slice first, forward-test it, then expand.
-The skill count remains **provisional**.
+هذه نسخة **Functional Internal Alpha** وليست SaaS عامة أو محرراً بصرياً.
 
-## Try it in 10 seconds
+## ما أصبح وظيفياً
+
+- أربع صفحات منطقية تُبنى إلى ثمانية مسارات AR/EN مع RTL/LTR بنيوي.
+- اختيار لغة على `/` أو وضع اللغة الأساسية مباشرة على جذر الدومين.
+- استقبال ملفات العميل وفهرسة DOCX/PDF والنصوص مع SHA-256.
+- زاحف HTTPS اختياري، محدود وعلى نفس النطاق، مع dry-run ومراعاة `robots.txt`.
+- عقود استراتيجية، اتجاه إبداعي، Copy ثنائي اللغة، SEO، Design Tokens وحركة.
+- أربعة مستويات زجاج دلالية: nav، surface، deep وluminous مع بديل معتم.
+- Hero سينمائي متجاوب: صورة معتمدة أولاً، ثم WebM/MP4 عند السماح بالحركة.
+- بديل Poster وإيقاف الفيديو والحركة عند `prefers-reduced-motion`.
+- مكوّنات: Cards، Metrics، Split، Steps، Route story، FAQ، Gallery،
+  Before/After، Logo cloud، Contact، Lead form وCTA.
+- موصل GPT Image 2 للصور وLuma Ray 3.2 للفيديو، بحد تنفيذ صريح.
+- Build ثابت حتمي، عقود مختومة، فحص صور وفيديو حقيقي، SEO وروابط وميزانيات.
+
+مشروع `projects/alpha-corporate` شركة خيالية ومرجع تنفيذي، وليس محتوى صالحاً للنشر لعميل.
+
+## التحقق
+
+المتطلبات: Python 3.12، FFmpeg/FFprobe، وPillow.
 
 ```bash
-make demo
-# or:
-bash scripts/run-checks.sh projects/demo-goldenish   # -> BLOCKED (exit 1)
-bash scripts/run-checks.sh projects/demo-fixed       # -> PASS    (exit 0)
+python3 -m pip install -r requirements-dev.txt
+make alpha-check
 ```
 
-`demo-goldenish` is a Golden-Tur-style project seeded with real failures. The gates catch:
-- an **unsupported superlative** ("the leading sesame exporter") → *blocked-unverified*;
-- an **aspiration published without an owner approval event**;
-- a product page with an **unresolved essential field** (`documented_origin` = blocking-open-question)
-  and one left `unknown` → publication blocked (you cannot pass a thin page by filling fields with "unknown").
+النتيجة المرجعية: 17 بوابة Build و18 اختباراً، ثم Build من ثمانية مسارات في
+`projects/alpha-corporate/build/`.
 
-`demo-fixed` is the remediated version (superlative replaced with a verified statement, aspiration
-approved via an event, essential fields resolved) → it PASSES.
+للمعاينة:
 
-## What's inside
-
-| Path | Primitive | What |
-| --- | --- | --- |
-| `projects/<p>/truth-ledger.json` | state | facts memory — 4-dimension claims |
-| `projects/<p>/events/*.jsonl` | state | decision memory — append-only, bound + anchored in CI |
-| `projects/<p>/index.json` | state | derived read-model the router reads first |
-| `probes/*.py` | probes | truth-lint, content-lint, manifest/hash, event-chain (zero deps) |
-| `.claude/agents/*.md` | reviewers | fresh-context subagents + rubric |
-| `.claude/skills/*/SKILL.md` | skills | capability instruction pack |
-| `.claude/settings.json` | hooks | run a probe on edit (verify hook schema vs current Claude Code docs) |
-| `.github/workflows/gates.yml` | CI | gates + a self-test that the blocker *actually blocks* |
-| `schemas/*.json` | contracts | JSON Schemas for the artifacts |
-
-## The four dimensions of truth (per claim)
-`evidence_status` (verified / owner-attested / unverified / unknown) ·
-`claim_risk` (low / medium / high / regulated) ·
-`publication_mode` (as-fact / attributed / aspirational / marketing / omitted / blocked) ·
-`required_approver_role` (owner / legal / privacy / tax / finance / food-safety / certification).
-A **verified** claim can still be **high-risk** and need a domain approver. Unsupported superlatives
-are **blocked-unverified** (unblock with evidence), not permanently banned unless Nabtiq adopts a policy.
-
-## Honesty notes
-- Real non-repudiation (OIDC identity, GitHub Artifact Attestations / Sigstore, external transparency
-  anchor) is wired in **CI**, not in the local probes; a malicious repo admin is in the threat model.
-- The probes are pragmatic (stdlib) enforcement of the contract rules, not a full JSON-Schema engine.
-- Exact Claude Code hook/agent frontmatter keys evolve — confirm against current docs before relying on them.
-
-## Next waves
-Wave 1 baseline security/privacy probes · Wave 2 content chain skills + reviewers ·
-Wave 3 visual/first-paint probes · Wave 4 build/a11y/perf · Wave 5 deploy/live-verify/monitoring.
-Then run the **two-pass blind forward-test** (Revision 2.2 §E) and derive the interim core-chain count.
-
-## Wave 1 — baseline security & privacy (mandatory in every profile)
-
-Four more probes run on every project (added to `scripts/run-checks.sh`), and **baseline security is
-mandatory — a missing security artifact BLOCKS**:
-
-| Probe | Class | Blocks on |
-| --- | --- | --- |
-| `secrets_scan` | deterministic | any exposed secret in the project subtree |
-| `header_csp_scan` | hybrid | missing baseline header; flags `unsafe-inline` / no Trusted Types (human confirms CSP strength) |
-| `privacy_scan` | hybrid | missing notice / lawful basis / retention; broken consent wiring — proves *wiring*, **not** legal compliance |
-| `sca_triage` | hybrid + triage | **only** KEV / exposed-secret / confirmed / accepted-high-confidence — an untriaged "High" opens a triage task, it does **not** auto-block |
-
-The `demo-goldenish` project now also carries a **leaked AWS key**, a **weak CSP** (missing HSTS,
-`unsafe-inline`, no Trusted Types), **broken consent wiring** (non-essential analytics with
-`consent_before_analytics:false` under a consent basis, no retention), and a **known-exploited (KEV)
-dependency** — all blocked. Its untriaged SAST "High" correctly opens a triage task **without** blocking.
-`demo-fixed` resolves them (clean secrets, full headers + Trusted Types, consent gated + retention set,
-KEV removed) and passes — while still carrying an untriaged "High" that opens triage but does not block.
-
-**PDPL note:** consent-first analytics is Nabtiq's conservative *default policy*, not the only lawful
-basis under Saudi PDPL. The lawful basis is a project/jurisdiction legal decision; regulated projects
-require a legal/privacy approval event + DPIA. A privacy scan never asserts legal compliance.
-
-## Wave 2 — content chain (skills + reviewers + bilingual parity)
-
-Adds the content capability skills (`.claude/skills/`): `brand-strategy`, `content-architecture`,
-`product-content-research`, `arabic-authoring`, `english-adaptation`, `seo-structured-content`; and two
-fresh-context reviewer agents (`.claude/agents/`): `english-quality-reviewer`, `content-ia-reviewer`.
-
-New probe `bilingual_parity_check` (deterministic) enforces **parity of FACTS, not literal words**: for a
-bilingual product page, EN and AR must reference the SAME `claim_refs`. `demo-goldenish` now seeds a
-divergence (EN references `claim:0002`, AR omits it) → BLOCKED. Native Arabic *fluency* is judged by the
-`arabic-native` reviewer agent, never by a probe. Bilingual sequencing (Rev 2.1 §E.3): author → language
-review → adaptation → parity review → owner approval bound to **both** locale hashes.
-
-## Claude Code integration (verified 2026-07-24)
-
-Formats confirmed against official docs (see `docs/CLAUDE-CODE-INTEGRATION.md`): subagent frontmatter,
-Agent-Skills `SKILL.md`, the **corrected hooks** (stdin-JSON, not env vars) via `.claude/hooks/post_edit_check.py`,
-`anthropics/claude-code-action@v1`, and **real GitHub Artifact Attestations** of gate evidence in CI
-(`actions/attest-build-provenance`, Sigstore + Rekor; public repos on Free/Pro/Team, private needs Enterprise Cloud).
-
-## Wave 3 — visual chain (image plan + first-paint reliability)
-
-Adds visual capability skills (`.claude/skills/`): `art-direction-image-plan`, `page-experience-composition`
-(restored per Rev 2.1 item 10), `design-system` (DTCG, supported token types only), `image-generation`; and a
-fresh-context `visual-qa-reviewer` agent.
-
-Two-part visual reliability (the honest split of Rev 2.2 §G.2):
-- **`image_plan_check` (stdlib, deterministic)** — the static plan/asset half, wired into the gates. Blocks:
-  **SVG fallback** (first-paint SVG-before-raster flash risk), a **documentary slot with no source**
-  (fake-facility/cert guard), a **missing asset** (IO-missing), missing **Light/Dark** variant, incomplete plan.
-- **`probes/first_paint_probe.mjs` (Playwright, controlled hybrid)** — the runtime frame-level half: pins
-  browser/viewport/network/cache and runs the condition matrix (AR/EN · light/dark · desktop/mobile · cold/warm
-  cache · slow network · no-JS · IO-missing/dead · post-wait), asserting **zero SVG requests** where prohibited.
-  It **activates in Wave 4** against a built candidate (needs `npm i playwright`); it is deliberately NOT in the
-  zero-dependency CI yet. A probe supplies evidence; the aesthetic "wow" is a human owner decision.
-
-`demo-goldenish` now also seeds an SVG-fallback hero, a missing dark variant, a documentary facility with no
-source, and missing image assets → all blocked. `demo-fixed` ships a clean manifest with present assets → passes.
-
-## Wave 4 — build, accessibility, performance (+ LIVE first-paint)
-
-Adds capability skills `tech-architecture` (stack/ADR/profile) and `web-implementation` (semantic HTML,
-RTL via CSS logical properties, raster hero with `fetchpriority`, consent-gated analytics) with a tiny
-reference renderer `scripts/build_site.py`; and fresh-context `accessibility-reviewer` + `performance-reviewer`.
-
-New stdlib gates (wired in):
-- **`contrast_audit`** — WCAG 2.2 AA. Deterministic for solid colours (blocks `#999` on `#fff` = 2.85:1);
-  text-over-image/translucent pairs are **flagged HYBRID** for human review, never auto-passed.
-- **`perf_budget_check`** — blocks a route whose lab LCP/INP/CLS or weight exceeds its human-set budget
-  (lab ≠ field; real-user CWV is monitored post-launch).
-
-**The first-paint probe is now LIVE** (`probes/first_paint_probe.mjs`, Playwright). It runs against a real
-built page across the pinned condition matrix and **catches the SVG-before-raster flash**:
 ```bash
-make first-paint                                   # demo-fixed build -> PASS (raster hero, IO-dead handled)
-bash scripts/first-paint.sh projects/demo-goldenish --flaw svg-flash   # -> FAIL (SVG request where prohibited)
+make alpha
+python3 -m http.server 8080 --directory projects/alpha-corporate/build
 ```
-This proves the exact Golden Tur visual failure is caught on a real page, not just in the plan.
 
-## Wave 5 — deploy, live-verify, monitoring (CI + events + scheduled automation)
+افتح `http://localhost:8080/en/` أو `http://localhost:8080/ar/`.
 
-Deploy is **not a capability skill** — it is the runtime doing CI + authenticated events + a scheduled
-watcher (Rev 2 primitives #1/#5/#6, never #2). Three stage-aware stdlib probes join the chain (they
-**skip** until the project reaches that stage, i.e. until their trigger artifact exists):
+## بدء عميل جديد
 
-- **`deploy_readiness`** — activates on `release-candidate.json`. Blocks unless there is a `rollback_target`
-  (atomic-rollback readiness), `gates_green: true`, **and** an authenticated `deployment-authorization`
-  approval event whose **issuer ≠ author** with role `owner`/`release-manager`. A human authorizes the
-  release; the workflow cannot self-grant it.
-- **`live_verify`** — activates on `live-verify.json`. Blocks a `localhost`/`127.0.0.1`/`file://` target
-  (the Golden-Tur *"verified an old local server"* failure), failed route health, non-passing production
-  first-paint, or headers not re-scanned on the live origin. This is **evidence** for the human
-  live-visual + indexing approval events, not the approval itself.
-- **`monitoring_state_check`** — activates on `monitoring-config.json`. Requires uptime, RUM (field CWV),
-  error-tracking, and dependency-vuln watch to be **armed**, plus a content-freshness cadence. A silent
-  monitor reads as healthy, so we require proof it reports.
+```bash
+python3 scripts/new_project.py client-name \
+  --brand-en "Client Name" \
+  --brand-ar "اسم العميل" \
+  --website "https://www.example.com" \
+  --email "hello@example.com" \
+  --default-locale ar \
+  --routing default-locale-root
+```
 
-Two workflows carry these:
-- **`.github/workflows/deploy.yml`** (`workflow_dispatch`) — re-runs the full chain, enforces
-  deploy-readiness, runs a placeholder deploy behind a `production` environment (add GitHub environment
-  protection for a second human approval), then gates on live-verify + monitoring-armed.
-- **`.github/workflows/monitoring.yml`** (daily cron + dispatch) — re-triggers `sca_triage` (new KEV /
-  confirmed CVE in a shipped dependency re-blocks) and `monitoring_state_check` (stays armed).
+الأمر ينشئ المشروع ويختم عقوده ويبنيه. المحتوى والوسائط المنسوخة من المرجع placeholders
+ويجب استبدالها واعتمادها. داخل Claude Code استخدم عبارة مثل:
 
-The chain is now **15 probes**, stage-aware end to end. `demo-fixed` seeds a clean release
-(rollback + authorized deploy event + https live-verify + armed monitoring) and **passes all 15**;
-`demo-goldenish` seeds the inverse (null rollback, `gates_green:false`, no auth event, `http://localhost`
-live URL, monitoring off) and is **blocked by all three new probes** on top of its existing security blocks.
+> استخدم مهارة studio-delivery لبناء موقع هذا العميل. ابدأ باستقبال الملفات وسجل الحقيقة،
+> ولا تنفذ أي توليد مدفوع أو نشر أو DNS من دون موافقتي الصريحة.
+
+## استقبال الملفات والموقع الحالي
+
+```bash
+python3 scripts/intake_files.py projects/client-name /path/to/client-files
+
+python3 scripts/crawl_site.py projects/client-name https://www.example.com
+# بعد فحص خطة dry-run والموافقة على الشبكة:
+python3 scripts/crawl_site.py projects/client-name https://www.example.com --execute
+```
+
+الأول يكتب `source-inventory.json`. الثاني يكتب `current-site-inventory.json` ولا يخرج
+عن النطاق الأصلي.
+
+## إنتاج الصور والفيديو
+
+الأوامر افتراضياً dry-run: لا تقرأ مفتاحاً ولا ترسل طلباً ولا تنشئ تكلفة.
+
+```bash
+python3 scripts/media_pipeline.py image projects/client-name home.hero
+python3 scripts/media_pipeline.py video projects/client-name home.hero.motion
+```
+
+بعد اعتماد الاتجاه الإبداعي والـstill، وبموافقة المشغّل:
+
+```bash
+export OPENAI_API_KEY="..."
+export LUMA_AGENTS_API_KEY="..."
+
+python3 scripts/media_pipeline.py image projects/client-name home.hero --execute
+python3 scripts/media_pipeline.py video projects/client-name home.hero.motion --execute --wait
+```
+
+القيم لا تدخل ملفات المشروع. بعد تنزيل فيديو مصدر:
+
+```bash
+python3 scripts/media_pipeline.py transcode projects/client-name projects/client-name/assets/source/hero-luma.mp4 \
+  --prefix hero-loop-desktop --width 1280 --height 720 \
+  --slot home.hero.motion --rendition desktop
+```
+
+ينتج MP4 وWebM وPoster، يحدّث hashes في manifest ويعيد ختمه.
+
+## ذاكرة المشروع
+
+| العقد | المسؤولية |
+| --- | --- |
+| `source-inventory.json` | ملفات العميل، hashes، مقتطفات وحالة المراجعة |
+| `current-site-inventory.json` | صفحات الموقع الحالي قبل الاستبدال |
+| `truth-ledger.json` | الحقائق، الأدلة وموقف النشر |
+| `site-strategy.json` | الجمهور والتموضع والمبادئ |
+| `site-map.json` | الصفحات، AR/EN وسياسة الروابط |
+| `pages/*.content.json` | Copy وSEO ومكوّنات الصفحات |
+| `creative-direction.json` | الفكرة الفنية والهيرو وحدود المواد |
+| `design-tokens.json` | الألوان والخط والمسافات والزجاج والحركة |
+| `image-manifest.json` | خطة الصور والقصّ والبدائل والمصدر |
+| `motion-spec.json` | غرض كل حركة وبديل reduced-motion |
+| `generation-plan.json` | المزود والنموذج وأسماء متغيرات البيئة |
+| `video-manifest.json` | الفيديو، Start frame، poster، المصادر والميزانية |
+
+## الحدود الصادقة
+
+موجود: مسار تشغيل داخلي كامل، موصلات توليد حقيقية، Build بصري متقدم، وحواجز قابلة للتكرار.
+
+غير موجود: واجهة عميل، تسجيل دخول، قاعدة بيانات، tenancy، billing، محرر سحب وإفلات،
+نشر تلقائي، DNS تلقائي، أو ضمان جودة جمالية/لغوية من دون مراجعة بشرية. موصلات API
+تحتاج حسابات صالحة ومفاتيح لدى المشغّل؛ الحزمة لا تتضمن مفاتيح ولم تُجرِ طلباً مدفوعاً.
+
+راجع `docs/STUDIO-WORKFLOW.md` و`docs/MEDIA-PROVIDERS.md` و
+`docs/ALPHA-VALIDATION.md`.

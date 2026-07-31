@@ -1,0 +1,71 @@
+{
+  "id": "index:alpha-corporate",
+  "type": "project-index",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "profile": "corporate-brochure",
+  "artifacts": {
+    "truth-ledger": {
+      "hash": "sha256:9c39e144a82bfa0937a7e23e8fbfd725b414e90a2f7508fae6af52898ae3b1d0",
+      "type": "truth-ledger",
+      "claims": 0
+    },
+    "site-strategy": {
+      "hash": "sha256:855844d98ffcd44d7c642e53dca7131d9da88c761115216ea91e5789d8500b90",
+      "type": "site-strategy"
+    },
+    "creative-direction": {
+      "hash": "sha256:30ee965557d8826e97e753d406329b2714b51a5364abfc54c02f86c4c482629a",
+      "type": "creative-direction"
+    },
+    "site-map": {
+      "hash": "sha256:207a5eb2385a5c4ca12d7f990bea09c46759937e23149cf7c5245674de08c82e",
+      "type": "site-map"
+    },
+    "design-tokens": {
+      "hash": "sha256:54899eefaea4b609ad185d237ca97e3356aacf7997add6d8a11831c207033965",
+      "type": "design-tokens"
+    },
+    "image-manifest": {
+      "hash": "sha256:ec6b15a4529744a98c6e71fcc5943504f9fb29896ee1be389af70b7f196403d4",
+      "type": "image-manifest"
+    },
+    "motion-spec": {
+      "hash": "sha256:76e318188407ae34d526306d6c7eb0667c902dd9a774d1329b4f1b6325cbf015",
+      "type": "motion-spec"
+    },
+    "generation-plan": {
+      "hash": "sha256:3c0047550c2cb5a41b0b8aa720a44ecf8c7880052db853a41f65e2b0a13b6d9d",
+      "type": "generation-plan"
+    },
+    "video-manifest": {
+      "hash": "sha256:e1c87add4bc36e220f688bd781423b5669ce15cf8e6d72251029f44e7699afae",
+      "type": "video-manifest"
+    }
+  },
+  "pages": [
+    {
+      "page": "about",
+      "type": "about",
+      "hash": "sha256:fd22eb832552d03d29a50609f8a1ef5840b020eac3a16311d0fde78202f4f4a7"
+    },
+    {
+      "page": "capabilities",
+      "type": "generic",
+      "hash": "sha256:12b54b24570106c64871e2ed66fd5e14c4cef8353bb49758225df586901ce2d7"
+    },
+    {
+      "page": "contact",
+      "type": "contact",
+      "hash": "sha256:739f860a3b75a0884659330bc5af5f13e0e8cccb2617030cc59ac53e12883afb"
+    },
+    {
+      "page": "home",
+      "type": "home",
+      "hash": "sha256:29c30a5b71d457cd5e5fb9751d56e12e9cd483e05c0c1e948cb29353db8eeb1f"
+    }
+  ],
+  "event_count": 0,
+  "note": "DERIVED read-model — rebuildable from Git + events; not authoritative.",
+  "content_hash": "sha256:370bad2d62e1b644fcdccab9d9b722c39008ceb5068b8b4a072c05c15d98899d"
+}

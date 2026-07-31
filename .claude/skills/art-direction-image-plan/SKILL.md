@@ -6,4 +6,6 @@ description: Capability skill. Sets the premium art direction and motion directi
 Emit `image-manifest.json` covering EVERY page/section slot (inner pages included, not homepage-only).
 Rules enforced by `image_plan_check`: a `documentary` slot needs a real `documentary_source`; fallback
 must never be `svg` (first-paint flash risk); Light AND Dark variants required; focal_point in [0,1].
-Prohibited: embedded text, fake certificates/flags/facilities/staff. Generation happens only after G8 approval.
+Each approved slot declares desktop/mobile/social/LQIP renditions with width, height and KB budget, plus
+generation provenance and a human-review note. Prohibited: embedded text, fake certificates/flags/facilities/staff.
+Generation happens only after approval; `asset_integrity_check` must decode every delivery rendition.

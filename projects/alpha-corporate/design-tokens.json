@@ -1,0 +1,317 @@
+{
+  "id": "design-tokens:alpha-corporate",
+  "type": "design-tokens",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:54899eefaea4b609ad185d237ca97e3356aacf7997add6d8a11831c207033965",
+  "format": "DTCG-compatible",
+  "tokens": {
+    "color": {
+      "ink": {
+        "deep": {
+          "$type": "color",
+          "$value": "#06131e"
+        },
+        "navy": {
+          "$type": "color",
+          "$value": "#0a2636"
+        }
+      },
+      "accent": {
+        "amber": {
+          "$type": "color",
+          "$value": "#f4b75b"
+        },
+        "copper": {
+          "$type": "color",
+          "$value": "#bd6a37"
+        }
+      }
+    },
+    "typography": {
+      "font": {
+        "family": {
+          "$type": "fontFamily",
+          "$value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif"
+        }
+      }
+    },
+    "layout": {
+      "max": {
+        "width": {
+          "$type": "dimension",
+          "$value": "76rem"
+        }
+      }
+    },
+    "radius": {
+      "md": {
+        "$type": "dimension",
+        "$value": ".75rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "1.45rem"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "2rem"
+      },
+      "pill": {
+        "$type": "dimension",
+        "$value": "999rem"
+      }
+    },
+    "glass": {
+      "blur": {
+        "nav": {
+          "$type": "dimension",
+          "$value": "1.15rem"
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "1.4rem"
+        },
+        "deep": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "luminous": {
+          "$type": "dimension",
+          "$value": "2.4rem"
+        }
+      }
+    },
+    "shadow": {
+      "glass": {
+        "$type": "shadow",
+        "$value": "0 1.5rem 5rem rgba(0, 10, 18, .16)"
+      }
+    },
+    "motion": {
+      "fast": {
+        "$type": "duration",
+        "$value": "180ms"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "620ms cubic-bezier(.2,.75,.2,1)"
+      }
+    }
+  },
+  "semantic": {
+    "light": {
+      "page": {
+        "bg": {
+          "$type": "color",
+          "$value": "#edf4f2"
+        }
+      },
+      "section": {
+        "tint": {
+          "$type": "color",
+          "$value": "#e3ece9"
+        }
+      },
+      "surface": {
+        "solid": {
+          "$type": "color",
+          "$value": "#f7fbfa"
+        }
+      },
+      "text": {
+        "primary": {
+          "$type": "color",
+          "$value": "#13262d"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#465f67"
+        }
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "#8a4e16"
+      },
+      "accent-glow": {
+        "$type": "color",
+        "$value": "rgba(189, 106, 55, .28)"
+      },
+      "accent-border": {
+        "$type": "color",
+        "$value": "rgba(138, 78, 22, .5)"
+      },
+      "pointer-glow": {
+        "$type": "color",
+        "$value": "rgba(244, 183, 91, .11)"
+      },
+      "grid": {
+        "$type": "color",
+        "$value": "rgba(19, 38, 45, .07)"
+      },
+      "glass": {
+        "border": {
+          "$type": "color",
+          "$value": "rgba(255, 255, 255, .64)"
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "rgba(255, 255, 255, .54)"
+        },
+        "nav": {
+          "$type": "color",
+          "$value": "rgba(247, 251, 250, .72)"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "rgba(10, 38, 54, .72)"
+        },
+        "shine": {
+          "$type": "color",
+          "$value": "rgba(255, 255, 255, .34)"
+        },
+        "edge": {
+          "$type": "color",
+          "$value": "rgba(244, 183, 91, .08)"
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "#9b5714"
+      },
+      "interactive": {
+        "$type": "color",
+        "$value": "rgba(19, 38, 45, .06)"
+      },
+      "interactive-hover": {
+        "$type": "color",
+        "$value": "rgba(19, 38, 45, .09)"
+      }
+    },
+    "dark": {
+      "page": {
+        "bg": {
+          "$type": "color",
+          "$value": "#071621"
+        }
+      },
+      "section": {
+        "tint": {
+          "$type": "color",
+          "$value": "#0a1d29"
+        }
+      },
+      "surface": {
+        "solid": {
+          "$type": "color",
+          "$value": "#102631"
+        }
+      },
+      "text": {
+        "primary": {
+          "$type": "color",
+          "$value": "#eef6f4"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#a5b8ba"
+        }
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "#f4b75b"
+      },
+      "accent-glow": {
+        "$type": "color",
+        "$value": "rgba(244, 183, 91, .28)"
+      },
+      "accent-border": {
+        "$type": "color",
+        "$value": "rgba(244, 183, 91, .46)"
+      },
+      "pointer-glow": {
+        "$type": "color",
+        "$value": "rgba(37, 166, 195, .12)"
+      },
+      "grid": {
+        "$type": "color",
+        "$value": "rgba(255, 255, 255, .045)"
+      },
+      "glass": {
+        "border": {
+          "$type": "color",
+          "$value": "rgba(255, 255, 255, .14)"
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "rgba(17, 44, 56, .5)"
+        },
+        "nav": {
+          "$type": "color",
+          "$value": "rgba(7, 22, 33, .68)"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "rgba(4, 16, 25, .64)"
+        },
+        "shine": {
+          "$type": "color",
+          "$value": "rgba(255, 255, 255, .13)"
+        },
+        "edge": {
+          "$type": "color",
+          "$value": "rgba(244, 183, 91, .08)"
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "#f4b75b"
+      },
+      "interactive": {
+        "$type": "color",
+        "$value": "rgba(255, 255, 255, .07)"
+      },
+      "interactive-hover": {
+        "$type": "color",
+        "$value": "rgba(255, 255, 255, .1)"
+      }
+    }
+  },
+  "contrast_pairs": [
+    {
+      "name": "light-body",
+      "fg": "#13262d",
+      "bg": "#edf4f2",
+      "over_image": false
+    },
+    {
+      "name": "light-muted",
+      "fg": "#465f67",
+      "bg": "#edf4f2",
+      "over_image": false
+    },
+    {
+      "name": "dark-body",
+      "fg": "#eef6f4",
+      "bg": "#071621",
+      "over_image": false
+    },
+    {
+      "name": "dark-muted",
+      "fg": "#a5b8ba",
+      "bg": "#071621",
+      "over_image": false
+    },
+    {
+      "name": "hero-copy",
+      "fg": "#ffffff",
+      "bg": "#06131e",
+      "over_image": true,
+      "translucent": true
+    }
+  ]
+}

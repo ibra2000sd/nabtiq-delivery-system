@@ -1,0 +1,72 @@
+{
+  "id": "video-manifest:alpha-corporate",
+  "type": "video-manifest",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:e1c87add4bc36e220f688bd781423b5669ce15cf8e6d72251029f44e7699afae",
+  "slots": [
+    {
+      "slot_id": "home.hero.motion",
+      "image_slot": "home.hero",
+      "status": "approved",
+      "truth_label": "conceptual",
+      "prompt_version": "hero-motion-alpha-v1",
+      "prompt": "A calm forward camera drift above the cargo vessel toward the warm horizon. Water reflections move naturally, distant port lights breathe subtly, route light remains refined and stable, commercial cinematic realism, restrained movement, no text, no logos.",
+      "start_frame": "assets/hero-desktop.webp",
+      "duration_seconds": 5,
+      "loop": true,
+      "muted": true,
+      "playsinline": true,
+      "resolution": "720p",
+      "aspect_ratio": "16:9",
+      "desktop": {
+        "poster": "assets/hero-loop-desktop-poster.webp",
+        "width": 1280,
+        "height": 720,
+        "budget_kb": 1600,
+        "sources": [
+          {
+            "src": "assets/hero-loop-desktop.webm",
+            "format": "webm",
+            "mime": "video/webm",
+            "sha256": "d1c3c8d905335c0b3dd614561209c97f75f6fbccb45124a0ed25e4910643bef8"
+          },
+          {
+            "src": "assets/hero-loop-desktop.mp4",
+            "format": "mp4",
+            "mime": "video/mp4",
+            "sha256": "da0f603e23a326f86a51c0a5ea04e908e6d17c45f5649a26df171503be67360d"
+          }
+        ]
+      },
+      "mobile": {
+        "poster": "assets/hero-loop-mobile-poster.webp",
+        "width": 720,
+        "height": 960,
+        "budget_kb": 1200,
+        "sources": [
+          {
+            "src": "assets/hero-loop-mobile.webm",
+            "format": "webm",
+            "mime": "video/webm",
+            "sha256": "f0c649a57da620b451ee8e0dc2ebd7c6e6fa2e7ee2ba51585c590a6a2d98d697"
+          },
+          {
+            "src": "assets/hero-loop-mobile.mp4",
+            "format": "mp4",
+            "mime": "video/mp4",
+            "sha256": "570fa2cdd1576ce38112c2db912e7dafdc7b61d0ca6eddfb49da0f2103302981"
+          }
+        ]
+      },
+      "provenance": {
+        "mode": "reference-derived",
+        "provider": "local-ffmpeg",
+        "model": "zoompan-reference-v1",
+        "source": "assets/source/hero-original.png",
+        "source_generation_id": null
+      },
+      "human_review": "Approved for the fictional Alpha reference only. Real projects require approval of the still frame before video generation."
+    }
+  ]
+}

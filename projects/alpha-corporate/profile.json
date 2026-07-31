@@ -1,0 +1,12 @@
+{
+  "id": "profile:alpha-corporate",
+  "type": "project-profile",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "profile": "corporate-brochure",
+  "primary_language": "en",
+  "secondary_language": "ar",
+  "market": "global",
+  "stage": "internal-alpha",
+  "content_hash": "sha256:31380805d7399c1be2ba68ea78107cbcc47b3af087c8478198fcd450b6f3ab84"
+}

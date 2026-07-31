@@ -13,9 +13,26 @@ def main():
     proj = project_dir(sys.argv)
     profile = load_json(proj / "profile.json") if (proj / "profile.json").exists() else {}
     artifacts = {}
-    if (proj / "truth-ledger.json").exists():
-        d = load_json(proj / "truth-ledger.json")
-        artifacts["truth-ledger"] = {"hash": hash_of_artifact(d), "claims": len(d.get("claims", []))}
+    for name in (
+        "truth-ledger",
+        "site-strategy",
+        "creative-direction",
+        "site-map",
+        "design-tokens",
+        "image-manifest",
+        "motion-spec",
+        "generation-plan",
+        "video-manifest",
+        "source-inventory",
+        "current-site-inventory",
+    ):
+        path = proj / f"{name}.json"
+        if path.exists():
+            doc = load_json(path)
+            summary = {"hash": hash_of_artifact(doc), "type": doc.get("type")}
+            if name == "truth-ledger":
+                summary["claims"] = len(doc.get("claims", []))
+            artifacts[name] = summary
     pages = []
     for pg in sorted((proj / "pages").glob("*.content.json")) if (proj / "pages").is_dir() else []:
         d = load_json(pg)
@@ -26,7 +43,7 @@ def main():
         if (proj / "events").is_dir() else 0
 
     index = {
-        "id": f"index:{proj.name}", "type": "project-index", "schema_version": "2.2.0",
+        "id": f"index:{proj.name}", "type": "project-index", "schema_version": "3.1.0-alpha.1",
         "project": proj.name, "profile": profile.get("profile"),
         "artifacts": artifacts, "pages": pages, "event_count": n_events,
         "note": "DERIVED read-model — rebuildable from Git + events; not authoritative.",

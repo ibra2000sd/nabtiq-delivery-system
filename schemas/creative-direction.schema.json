@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Approved Creative Direction",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "status",
+    "name",
+    "central_idea",
+    "visual_language",
+    "glass_profile",
+    "hero",
+    "approval"
+  ],
+  "properties": {
+    "type": { "const": "creative-direction" },
+    "status": { "enum": ["draft", "reviewed", "approved"] },
+    "glass_profile": {
+      "type": "object",
+      "required": ["intent", "depths", "fallback"]
+    },
+    "hero": {
+      "type": "object",
+      "required": [
+        "narrative",
+        "desktop_composition",
+        "mobile_composition",
+        "text_safe_zones",
+        "truth_label"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": ["status", "reviewed_by"]
+    }
+  }
+}

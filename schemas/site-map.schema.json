@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nabtiq.example/schemas/site-map.schema.json",
+  "title": "Corporate/Brochure Alpha Site Map",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "default_locale",
+    "locales",
+    "navigation",
+    "pages"
+  ],
+  "properties": {
+    "type": {
+      "const": "site-map"
+    },
+    "default_locale": {
+      "enum": [
+        "en",
+        "ar"
+      ]
+    },
+    "routing": {
+      "type": "object",
+      "required": [
+        "mode",
+        "root_behavior"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "locale-prefix-all",
+            "default-locale-root"
+          ]
+        },
+        "root_behavior": {
+          "enum": [
+            "chooser",
+            "default-locale"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "locales": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "dir",
+          "ui"
+        ],
+        "properties": {
+          "code": {
+            "enum": [
+              "en",
+              "ar"
+            ]
+          },
+          "dir": {
+            "enum": [
+              "ltr",
+              "rtl"
+            ]
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "template",
+          "source",
+          "paths"
+        ],
+        "properties": {
+          "paths": {
+            "type": "object",
+            "required": [
+              "en",
+              "ar"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "truth-ledger:alpha-corporate",
+  "type": "truth-ledger",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:9c39e144a82bfa0937a7e23e8fbfd725b414e90a2f7508fae6af52898ae3b1d0",
+  "claims": [],
+  "note": "The reference company and its copy are explicitly fictional. Replace all demonstration copy with owner-approved claims before client publication."
+}

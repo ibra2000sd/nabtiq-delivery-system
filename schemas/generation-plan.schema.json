@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Media Provider Generation Plan",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "providers",
+    "safety"
+  ],
+  "properties": {
+    "type": { "const": "generation-plan" },
+    "providers": {
+      "type": "object",
+      "required": ["image", "video"]
+    },
+    "safety": {
+      "type": "object",
+      "required": [
+        "explicit_execute_required",
+        "secrets_in_environment_only",
+        "human_frame_approval_before_video",
+        "documentary_generation_prohibited"
+      ]
+    }
+  }
+}

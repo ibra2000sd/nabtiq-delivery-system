@@ -1,0 +1,263 @@
+{
+  "id": "page:alpha-corporate:capabilities",
+  "type": "content-page",
+  "schema_version": "3.1.0-alpha.1",
+  "project": "alpha-corporate",
+  "content_hash": "sha256:12b54b24570106c64871e2ed66fd5e14c4cef8353bb49758225df586901ce2d7",
+  "page_type": "generic",
+  "blocks": [
+    {
+      "id": "hero",
+      "heading": "One system from content to release.",
+      "body": "The functional boundaries of the internal Alpha."
+    }
+  ],
+  "locales": {
+    "en": {
+      "nav_label": "Capabilities",
+      "claim_refs": [],
+      "seo": {
+        "title": "Capabilities — Nabtiq Atlas",
+        "description": "See the content, design, media, generation and validation capabilities implemented in the Nabtiq Corporate/Brochure internal Alpha."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "Alpha capabilities",
+          "heading": "One system from content to release.",
+          "body": "The Alpha connects bilingual content, semantic tokens, responsive media and deterministic static generation without hiding the remaining human decisions.",
+          "primary_cta": {
+            "label": "Start a conversation",
+            "href": "/en/contact/"
+          },
+          "note": "Implemented for the Corporate/Brochure profile only.",
+          "scroll_label": "Capabilities"
+        },
+        {
+          "id": "capability-grid",
+          "type": "cards",
+          "eyebrow": "Implemented layers",
+          "heading": "A small complete path beats a large incomplete promise.",
+          "body": "These six areas are represented by real source artifacts, build behavior or executable probes.",
+          "items": [
+            {
+              "heading": "Bilingual content",
+              "body": "English and Arabic live in the same page contract while preserving independent natural copy.",
+              "points": [
+                "Locale-specific SEO",
+                "Route-level language switching",
+                "RTL through logical layout"
+              ]
+            },
+            {
+              "heading": "Design system",
+              "body": "Base and semantic tokens drive colour, material, typography, layout, radius and motion.",
+              "points": [
+                "Light and dark themes",
+                "Semantic token resolution",
+                "Contrast declarations"
+              ]
+            },
+            {
+              "heading": "Visual production",
+              "body": "The approved hero includes responsive renditions, budgets, alternative text and generation provenance.",
+              "points": [
+                "Desktop and mobile crops",
+                "Social and LQIP renditions",
+                "Conceptual truth label"
+              ]
+            },
+            {
+              "heading": "Glass material",
+              "body": "Navigation, surface, deep and luminous glass share one controlled material grammar.",
+              "points": [
+                "Blur and solid fallbacks",
+                "Pointer-responsive light",
+                "Theme-aware borders"
+              ]
+            },
+            {
+              "heading": "Motion system",
+              "body": "Motion progressively enhances reading order without becoming a requirement for comprehension.",
+              "points": [
+                "Intersection reveals",
+                "Header and pointer response",
+                "Reduced-motion controls"
+              ]
+            },
+            {
+              "heading": "Verification",
+              "body": "The repeatable check path validates project contracts, decoded assets, routes, SEO and output weight.",
+              "points": [
+                "Failing fixtures",
+                "Unit tests",
+                "Build-stage gates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pipeline",
+          "type": "route",
+          "eyebrow": "Executable boundary",
+          "heading": "The renderer consumes contracts, not chat history.",
+          "body": "Every required input is stored in the project directory and each generated route can be rebuilt.",
+          "items": [
+            {
+              "heading": "Project",
+              "body": "Profile, brand, sitemap and approved page content."
+            },
+            {
+              "heading": "Direction",
+              "body": "Semantic tokens, theme rules and media slot decisions."
+            },
+            {
+              "heading": "Build",
+              "body": "Localized HTML, shared CSS and JavaScript, assets and search files."
+            },
+            {
+              "heading": "Gate",
+              "body": "Contract, content, asset, SEO, security and build-output evidence."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "Internal use",
+          "heading": "Clone the reference. Replace the inputs. Rebuild.",
+          "body": "The included scaffolding command creates another project from the governed Corporate/Brochure seed.",
+          "primary_cta": {
+            "label": "Contact",
+            "href": "/en/contact/"
+          }
+        }
+      ]
+    },
+    "ar": {
+      "nav_label": "القدرات",
+      "claim_refs": [],
+      "seo": {
+        "title": "القدرات — نبتيق أطلس",
+        "description": "تعرّف على قدرات المحتوى والتصميم والأصول والتوليد والتحقق المنفذة في نسخة نبتيق الداخلية للمواقع المؤسسية."
+      },
+      "blocks": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "asset_slot": "home.hero",
+          "eyebrow": "قدرات النسخة التجريبية",
+          "heading": "نظام واحد من المحتوى حتى الإصدار.",
+          "body": "تربط النسخة بين المحتوى الثنائي والرموز الدلالية والأصول المتجاوبة والتوليد الثابت من دون إخفاء القرارات التي ما تزال بحاجة إلى الإنسان.",
+          "primary_cta": {
+            "label": "ابدأ محادثة",
+            "href": "/ar/contact/"
+          },
+          "note": "منفّذة حالياً لنمط المواقع المؤسسية والتعريفية فقط.",
+          "scroll_label": "القدرات"
+        },
+        {
+          "id": "capability-grid",
+          "type": "cards",
+          "eyebrow": "طبقات منفّذة",
+          "heading": "مسار صغير مكتمل أفضل من وعد كبير ناقص.",
+          "body": "تُمثَّل هذه المجالات الستة بملفات مصدر حقيقية أو سلوك بناء أو فحوص قابلة للتنفيذ.",
+          "items": [
+            {
+              "heading": "محتوى ثنائي اللغة",
+              "body": "تعيش العربية والإنجليزية في عقد صفحة واحد مع الحفاظ على صياغة طبيعية مستقلة لكل لغة.",
+              "points": [
+                "تهيئة بحث خاصة بكل لغة",
+                "تبديل اللغة على مستوى المسار",
+                "RTL عبر خصائص التخطيط المنطقية"
+              ]
+            },
+            {
+              "heading": "نظام تصميم",
+              "body": "تقود الرموز الأساسية والدلالية اللون والمادة والخط والتخطيط والحواف والحركة.",
+              "points": [
+                "نمط فاتح وداكن",
+                "حلّ الرموز الدلالية",
+                "تعريفات قابلة لفحص التباين"
+              ]
+            },
+            {
+              "heading": "إنتاج بصري",
+              "body": "يتضمن الهيرو المعتمد نسخاً متجاوبة وميزانيات ونصوصاً بديلة ومصدر التوليد.",
+              "points": [
+                "اقتصاص مكتبي وجوّال",
+                "نسخة اجتماعية وصورة أولية خفيفة",
+                "وسم مفاهيمي صريح"
+              ]
+            },
+            {
+              "heading": "مادة زجاجية",
+              "body": "تشترك مستويات التنقل والسطح والعمق والإضاءة في لغة مادية واحدة منضبطة.",
+              "points": [
+                "ضبابية مع بديل صلب",
+                "إضاءة تستجيب للمؤشر",
+                "حواف تتكيف مع النمط"
+              ]
+            },
+            {
+              "heading": "نظام حركة",
+              "body": "تحسّن الحركة ترتيب القراءة تدريجياً من دون أن تصبح شرطاً لفهم المحتوى.",
+              "points": [
+                "ظهور مرتبط بالتمرير",
+                "استجابة للرأس والمؤشر",
+                "احترام تقليل الحركة"
+              ]
+            },
+            {
+              "heading": "تحقق",
+              "body": "يفحص المسار القابل للتكرار عقود المشروع والأصول بعد فكها والمسارات والبحث ووزن المخرجات.",
+              "points": [
+                "عينات فشل مقصودة",
+                "اختبارات وحدات",
+                "بوابات مرحلة البناء"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pipeline",
+          "type": "route",
+          "eyebrow": "حدود قابلة للتنفيذ",
+          "heading": "يقرأ المولّد العقود، لا ذاكرة المحادثة.",
+          "body": "تُحفظ جميع المدخلات المطلوبة في مجلد المشروع، ويمكن إعادة بناء كل مسار ناتج.",
+          "items": [
+            {
+              "heading": "المشروع",
+              "body": "النمط والعلامة وخريطة الموقع ومحتوى الصفحات المعتمد."
+            },
+            {
+              "heading": "الاتجاه",
+              "body": "الرموز الدلالية وقواعد الأنماط وقرارات مساحات الوسائط."
+            },
+            {
+              "heading": "البناء",
+              "body": "HTML محلي وCSS وJavaScript مشتركان وأصول وملفات بحث."
+            },
+            {
+              "heading": "البوابة",
+              "body": "أدلة العقود والمحتوى والأصول والبحث والأمان والمخرجات."
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "type": "cta",
+          "eyebrow": "للاستخدام الداخلي",
+          "heading": "انسخ المرجع. استبدل المدخلات. أعد البناء.",
+          "body": "ينشئ أمر التأسيس المرفق مشروعاً جديداً من بذرة المواقع المؤسسية المحكومة.",
+          "primary_cta": {
+            "label": "تواصل معنا",
+            "href": "/ar/contact/"
+          }
+        }
+      ]
+    }
+  }
+}

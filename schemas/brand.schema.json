@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nabtiq.example/schemas/brand.schema.json",
+  "title": "Corporate/Brochure Alpha Brand",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schema_version",
+    "project",
+    "content_hash",
+    "short_name",
+    "name",
+    "descriptor",
+    "website",
+    "contact"
+  ],
+  "properties": {
+    "type": {
+      "const": "brand"
+    },
+    "name": {
+      "type": "object",
+      "required": [
+        "en",
+        "ar"
+      ],
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ar": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "website": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "contact": {
+      "type": "object",
+      "required": [
+        "email"
+      ]
+    }
+  }
+}

@@ -6,5 +6,6 @@
   "profile": "corporate-brochure",
   "primary_language": "en",
   "secondary_language": "ar",
-  "market": "gulf"
+  "market": "gulf",
+  "content_hash": "sha256:1fc6fff8c0a3ced534e0cc193846b47f764131dbfada0659daf00e24d2ebe148"
 }

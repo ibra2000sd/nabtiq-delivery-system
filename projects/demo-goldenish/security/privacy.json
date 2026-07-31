@@ -4,5 +4,6 @@
   "retention_days": null,
   "analytics_enabled": true,
   "analytics_essential": false,
-  "consent_before_analytics": false
+  "consent_before_analytics": false,
+  "content_hash": "sha256:dd2a5adff02d891caa66f397da061239759c1de52eea0c8d9148ac4a1d93a239"
 }

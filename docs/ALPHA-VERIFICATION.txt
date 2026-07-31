@@ -1,0 +1,31 @@
+Nabtiq Studio Alpha 3.1.0-alpha.1 — local verification
+Audit date: 2026-07-31
+
+Commands executed:
+  python3 -m compileall -q scripts probes studio tests
+  bash -n scripts/*.sh
+  node --check site_templates/corporate-brochure/app.js
+  node --check probes/first_paint_probe.mjs
+  bash scripts/alpha-check.sh projects/alpha-corporate
+
+Verified results:
+  PASS — Python compilation
+  PASS — shell syntax
+  PASS — frontend JavaScript syntax
+  PASS — Playwright probe JavaScript syntax
+  PASS — deterministic build of 8 localized routes plus root chooser
+  PASS — 17 build-stage probes
+  PASS — 18 unit and deliberately-negative tests
+  PASS — 4 image renditions decoded
+  PASS — 4 responsive MP4/WebM video assets decoded with ffprobe
+  PASS — provider request dry-runs without reading API keys
+  PASS — default-locale-root scaffold smoke test and full build gates
+
+Not executed locally:
+  - Playwright browser matrix: no Chromium binary was present.
+  - OpenAI/Luma paid requests: no operator API keys were read and no external spend was authorized.
+  - Production deployment, DNS, live verification and monitoring.
+
+Human decisions still required for every real client:
+  factual approval, native-language approval, creative/aesthetic approval,
+  text-over-media review, privacy/legal review and release authorization.
