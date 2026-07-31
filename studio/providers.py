@@ -92,8 +92,8 @@ def openai_image_payload(
         raise ValueError("image prompt cannot be empty")
     if output_format not in {"png", "jpeg", "webp"}:
         raise ValueError("output_format must be png, jpeg or webp")
-    # gpt-image-2 does not accept a `background` parameter (verified against the
-    # current Images API guide); do not send one.
+    # `background` is optional for gpt-image-2 ("opaque"/"auto" are accepted; only
+    # "transparent" is unsupported). We omit it and rely on the default (opaque).
     return {
         "model": model,
         "prompt": prompt,

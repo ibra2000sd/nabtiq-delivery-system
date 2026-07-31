@@ -169,7 +169,7 @@ class AlphaBuildTests(unittest.TestCase):
     def test_provider_payloads_are_current_and_guard_loop_constraints(self):
         image = openai_image_payload(prompt="A restrained corporate hero")
         self.assertEqual(image["model"], "gpt-image-2-2026-04-21")
-        self.assertNotIn("background", image)  # unsupported by gpt-image-2
+        self.assertNotIn("background", image)  # intentionally omitted → default opaque; only "transparent" is unsupported
         video = luma_video_payload(prompt="Subtle forward drift")
         self.assertEqual(video["model"], "ray-3.2")
         self.assertEqual(video["type"], "video")
